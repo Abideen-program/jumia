@@ -1,17 +1,24 @@
-import React from "react";
+import { useState } from "react";
 import Banner from "./Banner";
 import { MdSearch, MdKeyboardArrowDown } from "react-icons/md";
 import { HiOutlineUser } from "react-icons/hi";
 import { BiHelpCircle } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Account from "./Account";
 
 function Header() {
+  const [acc, setAcc] = useState(false);
+
+  const showAcc = () => {
+    setAcc(!acc);
+  };
+
   return (
     <>
       <Banner />
       {/* DESKETOP NAVBAR */}
-      <div className="bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center">
+      <div className="bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center relative">
         <div className="h-[50px]">
           <img className="h-full" src="/images/jumia-logo.png" alt="jumia" />
         </div>
@@ -25,30 +32,34 @@ function Header() {
                 placeholder="Search products, brands and categories"
               />
             </div>
-            <button className="bg-[#FF9900] rounded-md text-white px-3 py-2 hover:bg-[#E07E1B]">
+            <button className="bg-[#FF9900] rounded-md text-white px-3 py-2 hover:bg-[#E07E1B] shadow-lg">
               SEARCH
             </button>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
+            <div
+              onClick={showAcc}
+              className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100"
+            >
               <HiOutlineUser className="text-2xl" />
               <p>Account</p>
               <MdKeyboardArrowDown />
             </div>
 
-            <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
+            <div className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
               <BiHelpCircle className="text-2xl" />
               <p>Help</p>
               <MdKeyboardArrowDown />
             </div>
 
-            <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
+            <div className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
               <AiOutlineShoppingCart className="text-2xl" />
               <p>Cart</p>
             </div>
           </div>
         </div>
+        {acc && <Account />}
       </div>
 
       {/* MOBILE VIEW */}
