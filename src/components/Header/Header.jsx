@@ -4,7 +4,7 @@ import { HiOutlineUser } from "react-icons/hi";
 import { BiHelpCircle } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import Banner from "./Banner";
 import Account from "./Account";
@@ -118,6 +118,8 @@ function Header() {
           </div>
         </div>
       </div>
+
+      <Outlet />
     </>
   );
 }
