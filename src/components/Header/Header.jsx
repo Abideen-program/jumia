@@ -1,10 +1,12 @@
 import { useState } from "react";
-import Banner from "./Banner";
 import { MdSearch, MdKeyboardArrowDown } from "react-icons/md";
 import { HiOutlineUser } from "react-icons/hi";
 import { BiHelpCircle } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
+
+import Banner from "./Banner";
 import Account from "./Account";
 import Help from "./Help";
 
@@ -27,9 +29,11 @@ function Header() {
       <Banner />
       {/* DESKETOP NAVBAR */}
       <div className="bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center relative">
-        <div className="h-[50px]">
-          <img className="h-full" src="/images/jumia-logo.png" alt="jumia" />
-        </div>
+        <Link to={"/"}>
+          <div className="h-[50px]">
+            <img className="h-full" src="/images/jumia-logo.png" alt="jumia" />
+          </div>
+        </Link>
         <div className="flex-1 flex item-center justify-center gap-3">
           <div className="flex-1 flex item-center justify-center gap-3">
             <div className="flex items-center border border-[#A3A3A6] rounded-md w-full p-[10px]">
@@ -89,9 +93,11 @@ function Header() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
-              <HiOutlineUser className="text-2xl" />
-            </div>
+            <Link to="signin">
+              <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
+                <HiOutlineUser className="text-2xl" />
+              </div>
+            </Link>
 
             <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
               <AiOutlineShoppingCart className="text-2xl" />

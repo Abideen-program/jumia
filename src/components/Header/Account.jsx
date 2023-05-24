@@ -1,7 +1,8 @@
 import React from "react";
 import { HiOutlineUser, HiOutlineGift } from "react-icons/hi";
-import { MdOutlineFavoriteBorder } from "react-icons/md"
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { clx } from "../utils/clx";
+import { Link } from "react-router-dom";
 
 const wrapperClass = clx(
   "absolute -bottom-52 right-44 bg-white w-[220px] rounded-md border border-stone-200"
@@ -16,9 +17,11 @@ const spanClass = clx("text-[grey] text-sm group-hover:text-[black]");
 const Account = () => {
   return (
     <div className={wrapperClass}>
-      <div className="py-4 mx-4">
-        <button className={buttonClass}>SIGN IN</button>
-      </div>
+      <Link to='signin'>
+        <div className="py-4 mx-4">
+          <button className={buttonClass}>SIGN IN</button>
+        </div>
+      </Link>
 
       <div className="border-t-2 border-[#f1f1f2] mt-2 ">
         <p className={pclasses}>
