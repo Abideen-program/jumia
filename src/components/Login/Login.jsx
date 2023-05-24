@@ -1,4 +1,11 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../firebaseConfig";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
 import { clx } from "../utils/clx";
 
 const wrapperClass = clx(
@@ -6,6 +13,64 @@ const wrapperClass = clx(
 );
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [createAccErr, setCreateAccErr] = useState(null);
+  const [signAccErr, setSignAccErr] = useState(null);
+
+  const navigate = useNavigate();
+
+  //sign in already created user
+  const signinUserHandler = async (event) => {
+    event.preventDefault();
+    await signInWithEmailAndPassword(auth, email, password)
+      .then((response) => {
+        if (response) {
+          navigate("/");
+          setEmail("");
+          setPassword("");
+        }
+      })
+      .catch((error) => {
+        if (error.message === "Firebase: Error (auth/wrong-password).") {
+          setSignAccErr("Email or Password not correct");
+        } else if ((error.message = "Firebase: Error (auth/user-not-found).")) {
+          setSignAccErr('User does not exist, try creating an account')
+        }
+          setTimeout(() => {
+            setSignAccErr(null);
+          }, 5000);
+      });
+  };
+
+  //create user with email and password
+  const createAccountHandler = async (event) => {
+    event.preventDefault();
+
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((response) => {
+        if (response) {
+          navigate("/");
+        }
+
+        setEmail("");
+        setPassword("");
+      })
+      .catch((error) => {
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          setCreateAccErr("User already exist");
+        } else if (
+          error.message ===
+          "Firebase: Password should be at least 6 characters (auth/weak-password)."
+        ) {
+          setCreateAccErr("Password should be at least 6 characters");
+        }
+        setTimeout(() => {
+          setCreateAccErr(null);
+        }, 5000);
+      });
+  };
+
   return (
     <div className={wrapperClass}>
       <form className="w-[300px] md:w-[500px] flex flex-col mt-10">
@@ -36,6 +101,8 @@ const Login = () => {
             id="email"
             className="p-3 w-full border-2 border-[#FF9900] rounded-sm focus:outline-0"
             type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
 
@@ -50,12 +117,21 @@ const Login = () => {
             id="password"
             className="p-3 w-full border-2 border-[#FF9900] rounded-sm focus:outline-0"
             type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
 
-        <button className="w-full bg-[#FF9900] rounded-sm text-white px-3 py-2 hover:bg-[#E07E1B] shadow-md my-4">
+        <button
+          onClick={signinUserHandler}
+          className="w-full bg-[#FF9900] rounded-sm text-white px-3 py-2 hover:bg-[#E07E1B] shadow-md mt-4 mb-1"
+        >
           Sign In
         </button>
+        {/* Error Message */}
+        <p className="text-center text-xs text-red-600 mb-4">
+          {signAccErr ? signAccErr : ""}
+        </p>
 
         <p className="text-center text-[12px] text-[#414141]">
           By signing-in you agree to JUMIA FAKE CLONE Conditions of Use and
@@ -63,9 +139,18 @@ const Login = () => {
           Interest-Based Ads Notice.
         </p>
 
-        <button className="w-full bg-[#FF9900] rounded-sm text-white px-3 py-2 hover:bg-[#E07E1B] shadow-md my-4">
+        <button
+          type="submit"
+          onClick={createAccountHandler}
+          className="w-full bg-[#FF9900] rounded-sm text-white px-3 py-2 hover:bg-[#E07E1B] shadow-md mt-4 mb-1"
+        >
           Create Your Jumia Account
         </button>
+
+        <p className="text-center text-xs text-red-600">
+          {createAccErr ? createAccErr : ""}
+        </p>
+
         <p className="mt-4 text-center text-[12px] text-[#414141]">
           For further support, you may visit the Help Center or contact our
           customer service team.
