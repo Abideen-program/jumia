@@ -6,12 +6,20 @@ import { BiHelpCircle } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Account from "./Account";
+import Help from "./Help";
 
 function Header() {
   const [acc, setAcc] = useState(false);
+  const [help, setHelp] = useState(false);
 
   const showAcc = () => {
     setAcc(!acc);
+    setHelp(false);
+  };
+
+  const showHelp = () => {
+    setHelp(!help);
+    setAcc(false);
   };
 
   return (
@@ -47,7 +55,10 @@ function Header() {
               <MdKeyboardArrowDown />
             </div>
 
-            <div className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
+            <div
+              onClick={showHelp}
+              className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100"
+            >
               <BiHelpCircle className="text-2xl" />
               <p>Help</p>
               <MdKeyboardArrowDown />
@@ -60,6 +71,7 @@ function Header() {
           </div>
         </div>
         {acc && <Account />}
+        {help && <Help />}
       </div>
 
       {/* MOBILE VIEW */}
