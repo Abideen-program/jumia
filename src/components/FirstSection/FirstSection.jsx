@@ -4,7 +4,7 @@ import Delivery from "./Delivery";
 
 const FirstSection = () => {
   return (
-    <div className="flex gap-3 px-[55px]">
+    <div className="flex gap-3 px-[20px] lg:px-[55px]">
       <Menu />
       <ImageSlider />
       <Delivery />

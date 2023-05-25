@@ -17,67 +17,67 @@ const ImageSlider = () => {
   return (
     <Carousel
       {...settings}
-      className="overflow-hidden relative w-[712px] h-[384px] rounded-md"
+      className="overflow-y-hidden overflow-x-scroll lg:overflow-x-hidden relative w-[712px] rounded-md"
     >
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/sliderone.png"
           alt=""
         />
       </div>
 
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/slidertwo.png"
           alt=""
         />
       </div>
 
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/sliderthree.jpg"
           alt=""
         />
       </div>
 
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/sliderfour.jpg"
           alt=""
         />
       </div>
 
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/sliderfive.jpg"
           alt=""
         />
       </div>
 
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/slidersix.jpg"
           alt=""
         />
       </div>
 
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/sliderseven.png"
           alt=""
         />
       </div>
 
-      <div className="focus:outline-0">
+      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
         <img
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain rounded-md"
           src="/images/slidereight.png"
           alt=""
         />
@@ -89,7 +89,7 @@ const ImageSlider = () => {
 const Carousel = styled(Slider)`
   & > button {
     height: 100%;
-    width: 10vw;
+    width: 7vw;
     cursor: pointer;
     z-index: 1;
     opacity: 0;
@@ -101,6 +101,13 @@ const Carousel = styled(Slider)`
 
     &:before {
       font-size: 30px;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      width: 0vw;
     }
   }
 

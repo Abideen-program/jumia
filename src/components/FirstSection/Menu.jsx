@@ -19,7 +19,7 @@ import MenuItem from "./MenuItem";
 const Menu = () => {
   return (
     <>
-      <div className="bg-white w-[206px] h-[384px] rounded-md p-2 flex flex-col gap-3">
+      <div className="bg-white w-[206px] h-max rounded-md p-2 hidden lg:flex flex-col gap-[4px] xl:gap-3">
         <MenuItem text="Supermarket" icon={<CiApple />} />
         <MenuItem text="Health & Beauty" icon={<HiOutlinePaintBrush />} />
         <MenuItem text="Home & Office" icon={<HiOutlineHome />} />
