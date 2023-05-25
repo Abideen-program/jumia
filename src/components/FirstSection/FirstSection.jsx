@@ -1,8 +1,11 @@
+import ImageSlider from "./ImageSlider";
 import Menu from "./Menu";
 
 const FirstSection = () => {
   return (
-    <div className="px-[55px] border-2 border-red-700">
+    <div className="flex gap-3 px-[55px]">
+      <Menu />
+      <ImageSlider />
       <Menu />
     </div>
   );
