@@ -1,6 +1,6 @@
 import React from "react";
 
-const SliderItem = ({title, image}) => {
+const SliderItem = ({ title, image }) => {
   return (
     <div className="focus:outline-0 rounded-md p-1 lg:p-0">
       <img

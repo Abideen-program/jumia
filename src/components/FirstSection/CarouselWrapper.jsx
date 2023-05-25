@@ -16,7 +16,7 @@ const CarouselWrapper = ({ children }) => {
   return (
     <Carousel
       {...settings}
-      className="overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100 overflow-x-scroll lg:overflow-x-hidden relative w-[712px] rounded-md"
+      className="overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100 overflow-x-scroll lg:overflow-x-hidden relative h-full w-[712px] rounded-md"
     >
       {children}
     </Carousel>
