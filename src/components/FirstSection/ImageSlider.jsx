@@ -1,133 +1,26 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import styled from "styled-components";
+import SliderItem from "./SliderItem";
+import CarouselWrapper from "./CarouselWrapper";
 
 const ImageSlider = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 100,
-    cssEase: "linear",
-  };
-
   return (
-    <Carousel
-      {...settings}
-      className="overflow-y-hidden overflow-x-scroll lg:overflow-x-hidden relative w-[712px] rounded-md"
-    >
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/sliderone.png"
-          alt=""
-        />
-      </div>
+    <CarouselWrapper className="overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-gray-100 overflow-x-scroll lg:overflow-x-hidden relative w-[712px] rounded-md">
+      <SliderItem titlte={""} image={"/images/sliderone.png"} />
 
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/slidertwo.png"
-          alt=""
-        />
-      </div>
+      <SliderItem titlte={""} image={"/images/slidertwo.png"} />
 
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/sliderthree.jpg"
-          alt=""
-        />
-      </div>
+      <SliderItem titlte={""} image={"/images/sliderthree.jpg"} />
 
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/sliderfour.jpg"
-          alt=""
-        />
-      </div>
+      <SliderItem titlte={""} image={"/images/sliderfour.jpg"} />
 
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/sliderfive.jpg"
-          alt=""
-        />
-      </div>
+      <SliderItem titlte={""} image={"/images/sliderfive.jpg"} />
 
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/slidersix.jpg"
-          alt=""
-        />
-      </div>
+      <SliderItem titlte={""} image={"/images/slidersix.jpg"} />
 
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/sliderseven.png"
-          alt=""
-        />
-      </div>
+      <SliderItem titlte={""} image={"/images/sliderseven.png"} />
 
-      <div className="focus:outline-0 rounded-md p-2 lg:p-0">
-        <img
-          className="w-full h-full object-contain rounded-md"
-          src="/images/slidereight.png"
-          alt=""
-        />
-      </div>
-    </Carousel>
+      <SliderItem titlte={""} image={"/images/slidereight.png"} />
+    </CarouselWrapper>
   );
 };
-
-const Carousel = styled(Slider)`
-  & > button {
-    height: 100%;
-    width: 7vw;
-    cursor: pointer;
-    z-index: 1;
-    opacity: 0;
-
-    &:hover {
-      opacity: 1;
-      transition: all 0.2s ease 0s;
-    }
-
-    &:before {
-      font-size: 30px;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      width: 0vw;
-    }
-  }
-
-  ul li button {
-    position: absolute;
-    top: -35px;
-
-    &:before {
-      font-size: 10px;
-      color: #828284;
-    }
-  }
-
-  li.slick-active button:before {
-    color: #ff9900;
-  }
-
-  .slick-list {
-    overflow: initial;
-  }
-`;
 
 export default ImageSlider;
