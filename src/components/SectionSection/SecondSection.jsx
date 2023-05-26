@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import SlideItem from "./SlideItem";
 
-const CarouselWrapper = () => {
+const SecondSection = () => {
   const width = window.innerWidth;
   let count;
 
@@ -86,4 +86,4 @@ const Carousel = styled(Slider)`
   }
 `;
 
-export default CarouselWrapper;
+export default SecondSection;
