@@ -1,5 +1,5 @@
 import FirstSection from "../FirstSection/FirstSection";
-import SecondSection from "../SectionSection/SecondSection";
+import SecondSection from "../SecondSection/SecondSection";
 import ThirdSection from "../ThirdSection/ThirdSection";
 const Home = () => {
   return (
