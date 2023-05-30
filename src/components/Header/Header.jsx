@@ -28,7 +28,7 @@ function Header() {
     <>
       <Banner />
       {/* DESKETOP NAVBAR */}
-      <div className="bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center relative">
+      <div className="bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center relative right-0 left-0 z-20">
         <Link to={"/"}>
           <div className="h-[50px]">
             <img className="h-full" src="/images/jumia-logo.png" alt="jumia" />

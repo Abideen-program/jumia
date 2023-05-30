@@ -27,7 +27,7 @@ const SlideItem = ({ title, image, price, percent }) => {
             <p className="text-xs md:text-sm font-[500] mt-1">₦{price}</p>
           )}
           {percent && (
-            <p className="text-[11px] md:text-xs line-through">₦{realPrice}</p>
+            <p className="text-[11px] mb-2 md:text-xs line-through">₦{realPrice}</p>
           )}
         </div>
       </div>
