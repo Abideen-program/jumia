@@ -2,7 +2,7 @@ import SlideItem from "../CarouselWrapper/SlideItem";
 import Wrapper from "../CarouselWrapper/Wrapper";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-const FourthSection = () => {
+const FifthSection = () => {
   const width = window.innerWidth;
   let count;
 
@@ -15,21 +15,18 @@ const FourthSection = () => {
 
   return (
     <>
-      <h3 className="bg-[#E61601] rounded-t-md text-white text-xs md:text-lg py-2 px-4 flex items-center justify-between">
-        <span className="font-semibold">Flash Sales</span>
-        <span className="font-light flex gap-1">
-          Time Left:<p className="font-semibold">06h : 48m : 18s</p>
-        </span>
+      <h3 className="bg-[#FEE2CC] rounded-t-md font-medium text-xs md:text-lg py-2 px-4 flex items-center justify-between">
+        <span>Limited Stock</span>
         <span className="md:text-[15px] flex items-center">
           SEE ALL <MdKeyboardArrowRight />
         </span>
       </h3>
       <Wrapper count={count}>
         <SlideItem
-          title="Men's Loose Breathable S.."
-          image="/images/white-shoe.jpg"
-          price={3660}
-          percent={59}
+          title="XAOMI Redmi 12C 6.53-i..."
+          image="/images/redmi.jpg"
+          price={65900}
+          percent={16}
         />
 
         <SlideItem
@@ -127,4 +124,4 @@ const FourthSection = () => {
   );
 };
 
-export default FourthSection;
+export default FifthSection;
