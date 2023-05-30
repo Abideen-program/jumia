@@ -30,94 +30,95 @@ const FifthSection = () => {
         />
 
         <SlideItem
-          title="2 Pieces 2-in-1 Unisex Bu.."
-          image="/images/hats.jpg"
-          price={3599}
-          percent={49}
+          title='Hisense 32" Inches Satalli..'
+          image="/images/hisensetv.jpg"
+          price={89880}
+          percent={1}
         />
 
         <SlideItem
-          title="Itel 1.7 Litres (IKE17U1) EI.."
-          image="/images/kettle.jpg"
-          price={6244}
-          percent={46}
+          title="Pringles Original Potato C.."
+          image="/images/pringles.jpg"
+          price={1400}
         />
 
         <SlideItem
-          title="Women Shoes Ladies Sne."
-          image="/images/black-shoe.jpg"
-          price={3100}
-          percent={54}
+          title="Darling Superstar Color"
+          image="/images/human-hair.jpg"
+          price={1840}
+          percent={9}
         />
 
         <SlideItem
-          title="Simple Hydrating Light M.."
-          image="/images/hydrate.jpg"
-          price={5500}
-          percent={21}
+          title="Silver Crest 2 Litres Germ.. "
+          image="/images/blender.jpg"
+          price={16990}
         />
 
         <SlideItem
-          title="Buddhist Jewelry Mens' R.."
-          image="/images/sliverbracelet.jpg"
-          price={2100}
-          percent={19}
+          title="Coca-Cola Drink - 50cl"
+          image="/images/coke.jpg"
+          price={1869}
+          percent={4}
         />
 
         <SlideItem
-          title="Nivea Perfect & Radiant.."
-          image="/images/nivea.jpg"
-          price={2830}
-          percent={2}
-        />
-
-        <SlideItem
-          title="Nivea Nourishing Cocoa.."
-          image="/images/niveacocoa.jpg"
-          price={3980}
-          percent={17}
-        />
-
-        <SlideItem
-          title="Men Casual Work Leath.."
-          image="/images/leathershoe.jpg"
-          price={6300}
-          percent={24}
-        />
-
-        <SlideItem
-          title="Men's Casual Board Runn.."
-          image="/images/white-trainers.jpg"
-          price={4999}
-          percent={74}
-        />
-
-        <SlideItem
-          title="Philly J84 White 10000 M.."
-          image="/images/powerbank.jpg"
-          price={4700}
-          percent={48}
-        />
-
-        <SlideItem
-          title="Upper Arm Style Automat.."
-          image="/images/pressure.jpg"
-          price={7251}
-          percent={47}
-        />
-
-        <SlideItem
-          title="Socks Set of 6 - Multicolor"
-          image="/images/socks.jpg"
+          title="Socks set of 6 - Multicolor"
+          image="/images/ankle-socks.jpg"
           price={1299}
           percent={81}
         />
 
         <SlideItem
-          title="Wedding Ring Set Diamo..."
-          image="/images/rings.jpg"
-          price={6500}
-          percent={57}
+          title="Mtng 4G LTE MiFi - M30S"
+          image="/images/wifi.jpg"
+          price={7500}
+        />
+
+        <SlideItem
+          title="Elepaq Constant Yaofeng"
+          image="/images/gen.jpg"
+          price={200000}
+        />
+
+        <SlideItem
+          title="Dano Cool Cow 350g Sac.."
+          image="/images/dano.jpg"
+          price={1790}
+        />
+
+        <SlideItem
+          title='UMIDIGI A13S 6.7" 4GB R..'
+          image="/images/umidigi.jpg"
+          price={69900}
+          percent={46}
+        />
+
+        <SlideItem
+          title="itel 3000mAh Triple Inpu.."
+          image="/images/itel-power.jpg"
+          price={16990}
+          percent={43}
+        />
+
+        <SlideItem
+          title="Irish Spring Soap Aloe 10"
+          image="/images/Irish.jpg"
+          price={1550}
+        />
+
+        <SlideItem
+          title="NIVEA Dry Impact Roll-on.."
+          image="/images/nivea.jpg"
+          price={2100}
+          percent={9}
+        />
+
+        <SlideItem
+          title="Oraimo Power-Bank OPB..."
+          image="/images/oraimo.jpg"
+          price={10500}
+          percent={49}
         />
       </Wrapper>
     </>

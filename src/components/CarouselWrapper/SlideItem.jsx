@@ -11,14 +11,18 @@ const SlideItem = ({ title, image, price, percent }) => {
             src={image}
             alt="product"
           />
-          <p className="absolute text-xs right-2 top-3 text-[#FF9900] bg-[#FEF3E9] p-1">
-            -{percent}%
-          </p>
+          {percent && (
+            <p className="absolute text-xs right-2 top-3 text-[#FF9900] bg-[#FEF3E9] p-1">
+              -{percent}%
+            </p>
+          )}
         </div>
         <div className="px-1">
           <p className="text-[11px] md:text-xs">{title}</p>
           <p className="text-xs md:text-sm font-[500] mt-1">₦{price}</p>
-          <p className="text-[11px] md:text-xs line-through">₦{realPrice}</p>
+          {percent && (
+            <p className="text-[11px] md:text-xs line-through">₦{realPrice}</p>
+          )}
         </div>
       </div>
     </>
