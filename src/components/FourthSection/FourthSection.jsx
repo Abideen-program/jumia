@@ -28,7 +28,7 @@ const FourthSection = () => {
 
   return (
     <>
-      <h3 className="bg-[#E61601] rounded-t-md text-white text-lg py-2 px-4 flex items-center justify-between">
+      <h3 className="bg-[#E61601] rounded-t-md text-white text-xs md:text-lg py-2 px-4 flex items-center justify-between">
         <span className="font-semibold">Flash Sales</span>
         <span className="font-light flex gap-1">
           Time Left:
@@ -36,7 +36,7 @@ const FourthSection = () => {
             {countDown.hours}h : {countDown.minutes}m : {countDown.seconds}s
           </p>
         </span>
-        <span className="text-[15px] flex items-center">
+        <span className="md:text-[15px] flex items-center">
           SEE ALL <MdKeyboardArrowRight />
         </span>
       </h3>
