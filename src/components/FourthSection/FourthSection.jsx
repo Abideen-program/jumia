@@ -1,6 +1,8 @@
 import SlideItem from "../CarouselWrapper/SlideItem";
 import Wrapper from "../CarouselWrapper/Wrapper";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import formartTime from "../utils/formartTime";
+import { useEffect, useState } from "react";
 
 const FourthSection = () => {
   const width = window.innerWidth;
@@ -13,12 +15,26 @@ const FourthSection = () => {
   if (width === 375) count = 2;
   if (width === 320) count = 1;
 
+  const [countDown, setCountDown] = useState({});
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const timer = formartTime();
+      setCountDown(timer);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <h3 className="bg-[#E61601] rounded-t-md text-white text-lg py-2 px-4 flex items-center justify-between">
         <span className="font-semibold">Flash Sales</span>
         <span className="font-light flex gap-1">
-          Time Left:<p className="font-semibold">06h : 48m : 18s</p>
+          Time Left:
+          <p className="font-semibold">
+            {countDown.hours}h : {countDown.minutes}m : {countDown.seconds}s
+          </p>
         </span>
         <span className="text-[15px] flex items-center">
           SEE ALL <MdKeyboardArrowRight />
