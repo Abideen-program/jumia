@@ -16,13 +16,13 @@ const SecondSection = () => {
   if (width === 375) count = 3;
   if (width === 320) count = 2;
 
-  const fetchData = async () => {
+  const fetchData = () => {
     return axios.get(
       "https://jumia-clone-d9ecf-default-rtdb.firebaseio.com/first.json"
     );
   };
 
-  const { isLoading, data } = useQuery("images", fetchData, {
+  const { isLoading, data } = useQuery("first", fetchData, {
     refetchOnWindowFocus: false,
   });
 
@@ -34,15 +34,19 @@ const SecondSection = () => {
     for (const key in loadedData) {
       loadedImages.push({
         id: key,
-        title: data?.data[key].title,
-        image: data?.data[key].imageURL,
+        title: loadedData[key].title,
+        image: loadedData[key].imageURL,
       });
     }
     setImages(loadedImages);
   }, [loadedData]);
 
-  if(isLoading) {
-    return <h4 className="my-4 text-center bg-green-300 text-white font-medium">Loading products!!!</h4>
+  if (isLoading) {
+    return (
+      <h4 className="my-4 text-center bg-green-300 text-white font-medium">
+        Loading products!!!
+      </h4>
+    );
   }
 
   return (

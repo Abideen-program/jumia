@@ -119,7 +119,7 @@ const FourthSection = () => {
         />
 
         <SlideItem
-          title="Upper Arm Style Automat.."
+          title="Upper Arm Style Autom.."
           image="/images/pressure.jpg"
           price={7251}
           percent={47}

@@ -7,7 +7,7 @@ const SlideItem = ({ title, image }) => {
         <img
           className="w-full h-full object-contain"
           src={image}
-          alt="phones"
+          alt="product"
         />
       </div>
       <p className="text-xs text-center">{title}</p>

@@ -1,8 +1,10 @@
-import React from "react";
 import { HiOutlineUser, HiOutlineGift } from "react-icons/hi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { clx } from "../utils/clx";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { auth } from "../../firebaseConfig";
+import { signOut } from "firebase/auth";
 
 const wrapperClass = clx(
   "absolute -bottom-52 right-44 bg-white w-[220px] rounded-md border border-stone-200 z-10"
@@ -14,14 +16,29 @@ const pclasses = clx(
   "group flex items-center p-3 gap-3 hover:bg-[#f1f1f2] transition-all duration-[300]  cursor-pointer"
 );
 const spanClass = clx("text-[grey] text-sm group-hover:text-[black]");
+
 const Account = () => {
+  const user = useSelector((state) => state.user.user);
+
+  const signOutHandler = () => {
+    signOut(auth);
+  };
+
   return (
     <div className={wrapperClass}>
-      <Link to='signin'>
+      {user ? (
         <div className="py-4 mx-4">
-          <button className={buttonClass}>SIGN IN</button>
+          <button onClick={signOutHandler} className={buttonClass}>
+            SIGN OUT
+          </button>
         </div>
-      </Link>
+      ) : (
+        <Link to="signin">
+          <div className="py-4 mx-4">
+            <button className={buttonClass}>SIGN IN</button>
+          </div>
+        </Link>
+      )}
 
       <div className="border-t-2 border-[#f1f1f2] mt-2 ">
         <p className={pclasses}>
