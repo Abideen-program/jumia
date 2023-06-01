@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { auth } from "../../firebaseConfig";
 import { signOut } from "firebase/auth";
+import { nameFormater } from "../utils/nameFormatter";
 
 const wrapperClass = clx(
   "absolute -bottom-52 right-44 bg-white w-[220px] rounded-md border border-stone-200 z-10"
@@ -18,7 +19,18 @@ const pclasses = clx(
 const spanClass = clx("text-[grey] text-sm group-hover:text-[black]");
 
 const Account = () => {
+  //get the logged in user
   const user = useSelector((state) => state.user.user);
+
+  //get the user email
+  const email = user?.email;
+
+  //format the user email to get a name
+  let name;
+  if (user) {
+    const formattedName = nameFormater(email);
+    name = formattedName.toUpperCase()
+  }
 
   const signOutHandler = () => {
     signOut(auth);
@@ -43,7 +55,7 @@ const Account = () => {
       <div className="border-t-2 border-[#f1f1f2] mt-2 ">
         <p className={pclasses}>
           <HiOutlineUser className="text-2xl" />
-          <span className={spanClass}>My Account</span>
+          <span className={spanClass}>{user ? name : "My Account"}</span>
         </p>
 
         <p className={pclasses}>
