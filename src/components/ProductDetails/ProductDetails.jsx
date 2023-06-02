@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useProductDetails } from "../CustomHook/useProductDetails";
 import { AiOutlineHeart, MdOutlineAddShoppingCart } from "react-icons/all";
+import { motion } from "framer-motion";
+import Promotion from "./Promotion";
 
 const ProductDetails = () => {
   const { productID } = useParams();
@@ -22,13 +24,13 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="mx-[55px] my-[30px] p-3 border-2 border-red-500 flex">
-      <div className="flex bg-white rounded-md">
-        <div className="border-b-2 border-[#f1f1f2] mx-2 p-4">
+    <div className="mx-[55px] my-[30px] p-3 border-2 border-red-500 flex gap-3">
+      <div className="flex bg-white rounded-md border-2 w-[80%] border-yellow-600">
+        <div className="mx-2 p-4">
           <img src={data?.data.imageURL} alt="product" />
         </div>
 
-        <div className="border-2 flex-1 border-yellow-500 py-2 px-4 w-[550px]">
+        <div className="flex-1 py-2 px-4 w-[550px]">
           {/* Details section */}
           <div className="flex items-start justify-between border-b-2 border-[#f1f1f2] pb-2">
             <div>
@@ -45,7 +47,7 @@ const ProductDetails = () => {
             </div>
           </div>
           {/* Price Section */}
-          <div>
+          <div className="border-b-2 border-[#f1f1f2]">
             {/* If there is price then render price */}
             {data?.data.price && (
               <h2 className="text-2xl font-bold my-2">₦{data?.data.price}</h2>
@@ -71,10 +73,32 @@ const ProductDetails = () => {
               + ₦210 shipping fee from the company
             </p>
 
-            <button className="flex items-center w-full bg-[#FF9900] rounded-md text-white px-4 py-2 hover:bg-[#E07E1B] shadow-lg">
-              <MdOutlineAddShoppingCart className="text-lg font-medium" />
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center w-full bg-[#FF9900] rounded-md text-white px-4 py-2 hover:bg-[#E07E1B] shadow-lg mb-4"
+            >
               <p className="mx-auto text-sm font-medium">ADD TO CART</p>
-            </button>
+              <MdOutlineAddShoppingCart className="text-lg font-medium" />
+            </motion.button>
+          </div>
+          <Promotion />
+        </div>
+      </div>
+      {/* Delivery Section */}
+      <div className="bg-white border border-sky-400 rounded-md flex-1">
+        <div className="border-b-2 border-[#f1f1f2]">
+          <p className="text-sm font-medium p-2">DELIVERY & RETURNS</p>
+        </div>
+
+        <div className="border-b-2 border-[#f1f1f2]">
+          <div className="p-2">
+            <img src="" alt="" />
+            <p className="text-[9px] font-medium ">
+              Free delivery on thousands of products in Lagos, Ibadan & Abuja{" "}
+              <span className="text-[11px] text-[#2671C2] cursor-pointer hover:underline">
+                Details
+              </span>
+            </p>
           </div>
         </div>
       </div>
