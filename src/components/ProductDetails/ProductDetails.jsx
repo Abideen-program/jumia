@@ -3,13 +3,12 @@ import { useProductDetails } from "../CustomHook/useProductDetails";
 import { AiOutlineHeart, MdOutlineAddShoppingCart } from "react-icons/all";
 import { motion } from "framer-motion";
 import Promotion from "./Promotion";
+import Delivery from "./Delivery";
 
 const ProductDetails = () => {
   const { productID } = useParams();
 
   const { isLoading, isError, data } = useProductDetails(productID);
-
-  console.log(data?.data);
 
   const realPrice = Math.ceil(
     data?.data.price / ((100 - data?.data.percent) / 100)
@@ -24,18 +23,24 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="mx-[55px] my-[30px] p-3 border-2 border-red-500 flex gap-3">
-      <div className="flex bg-white rounded-md border-2 w-[80%] border-yellow-600">
+    <div className="md:mx-[55px] my-[20px] p-3 border-2 border-red-500 flex flex-col lg:flex-row gap-3">
+      <div className="md:flex bg-white rounded-md lg:w-[80%]">
         <div className="mx-2 p-4">
-          <img src={data?.data.imageURL} alt="product" />
+          <img
+            className="w-full object-contain"
+            src={data?.data.imageURL}
+            alt="product"
+          />
         </div>
 
-        <div className="flex-1 py-2 px-4 w-[550px]">
+        <div className="flex-1 py-2 px-4">
           {/* Details section */}
-          <div className="flex items-start justify-between border-b-2 border-[#f1f1f2] pb-2">
+          <div className="lg:flex items-start justify-between border-b-2 border-[#f1f1f2] pb-2">
             <div>
-              <h4 className="text-xl w-[95%]">{data?.data.label}</h4>
-              <h5 className="text-sm my-2">
+              <h4 className="text-sm md:text-base lg:text-xl md:w-[95%]">
+                {data?.data.label}
+              </h4>
+              <h5 className="text-xs md:text-sm my-2">
                 <span>Brand:</span>{" "}
                 <span className="text-[#2671C2] hover:underline">
                   {data?.data.title}
@@ -50,20 +55,22 @@ const ProductDetails = () => {
           <div className="border-b-2 border-[#f1f1f2]">
             {/* If there is price then render price */}
             {data?.data.price && (
-              <h2 className="text-2xl font-bold my-2">₦{data?.data.price}</h2>
+              <h2 className="text-base md:text-2xl font-bold my-2">
+                ₦{data?.data.price}
+              </h2>
             )}
 
             <div className="flex gap-2 items-center justify-between w-min">
               {/* if there is percentage, render real price. */}
               {data?.data.percent && (
-                <p className="text-lg text-[#75757A] line-through">
+                <p className="text-sm md:text-lg text-[#75757A] line-through">
                   ₦{realPrice}
                 </p>
               )}
 
               {/* if there is percentage, render it */}
               {data?.data.percent && (
-                <span className="text-[#FF9900] bg-[#FEF3E9] p-1">
+                <span className="text-xs md:text-base text-[#FF9900] bg-[#FEF3E9] p-1">
                   -{data?.data.percent}%
                 </span>
               )}
@@ -77,31 +84,15 @@ const ProductDetails = () => {
               whileTap={{ scale: 0.9 }}
               className="flex items-center w-full bg-[#FF9900] rounded-md text-white px-4 py-2 hover:bg-[#E07E1B] shadow-lg mb-4"
             >
-              <p className="mx-auto text-sm font-medium">ADD TO CART</p>
               <MdOutlineAddShoppingCart className="text-lg font-medium" />
+              <p className="mx-auto text-sm font-medium">ADD TO CART</p>
             </motion.button>
           </div>
           <Promotion />
         </div>
       </div>
       {/* Delivery Section */}
-      <div className="bg-white border border-sky-400 rounded-md flex-1">
-        <div className="border-b-2 border-[#f1f1f2]">
-          <p className="text-sm font-medium p-2">DELIVERY & RETURNS</p>
-        </div>
-
-        <div className="border-b-2 border-[#f1f1f2]">
-          <div className="p-2">
-            <img src="" alt="" />
-            <p className="text-[9px] font-medium ">
-              Free delivery on thousands of products in Lagos, Ibadan & Abuja{" "}
-              <span className="text-[11px] text-[#2671C2] cursor-pointer hover:underline">
-                Details
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <Delivery />
     </div>
   );
 };
