@@ -5,6 +5,7 @@ import Wrapper from "../CarouselWrapper/Wrapper";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ThirdSection = () => {
   const [products, setProducts] = useState([]);
@@ -61,13 +62,15 @@ const ThirdSection = () => {
       <Wrapper count={count}>
         {products.map((product) => {
           return (
-            <SlideItem
-              key={product.id}
-              title={product.title}
-              image={product.image}
-              price={product.price}
-              percent={product.percent}
-            />
+            <Link key={product.id} to={`/${product.id}`}>
+              <SlideItem
+                key={product.id}
+                title={product.title}
+                image={product.image}
+                price={product.price}
+                percent={product.percent}
+              />
+            </Link>
           );
         })}
       </Wrapper>
