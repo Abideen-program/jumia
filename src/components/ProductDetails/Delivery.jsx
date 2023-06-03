@@ -12,7 +12,7 @@ const Delivery = () => {
   console.log(statesLGA.lgas);
 
   return (
-    <div className="bg-white border border-sky-400 rounded-md flex-1">
+    <div className="bg-white rounded-md flex-1">
       <div className="border-b-2 border-[#f1f1f2]">
         <p className="text-sm font-medium p-2">DELIVERY & RETURNS</p>
       </div>

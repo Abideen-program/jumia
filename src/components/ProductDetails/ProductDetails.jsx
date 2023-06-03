@@ -23,7 +23,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="md:mx-[55px] my-[20px] p-3 border-2 border-red-500 flex flex-col lg:flex-row gap-3">
+    <div className="md:mx-[55px] my-[20px] p-3 flex flex-col lg:flex-row gap-3">
       <div className="md:flex bg-white rounded-md lg:w-[80%]">
         <div className="mx-2 p-4">
           <img

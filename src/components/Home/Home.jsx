@@ -11,6 +11,7 @@ import SeventhSection from "../SeventhSection/SeventhSection";
 import SixthSection from "../SixthSection/SixthSection";
 import ThirdSection from "../ThirdSection/ThirdSection";
 import { setUser } from "../Store/Features/UserSlice";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,20 +27,23 @@ const Home = () => {
           })
         );
       } else {
-        dispatch(setUser(null))
+        dispatch(setUser(null));
       }
     });
   }, []);
   return (
-    <div className="my-4 w-full px-[0px] lg:px-[55px]">
-      <FirstSection />
-      <SecondSection />
-      <ThirdSection />
-      <FourthSection />
-      <FifthSection />
-      <SixthSection />
-      <SeventhSection />
-    </div>
+    <>
+      <div className="my-4 w-full px-[0px] lg:px-[55px]">
+        <FirstSection />
+        <SecondSection />
+        <ThirdSection />
+        <FourthSection />
+        <FifthSection />
+        <SixthSection />
+        <SeventhSection />
+      </div>
+      <Footer />
+    </>
   );
 };
 
