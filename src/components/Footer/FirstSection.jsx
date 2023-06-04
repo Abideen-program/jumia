@@ -3,10 +3,10 @@ import { AiFillApple } from "react-icons/ai";
 
 const FirstSection = () => {
   return (
-    <div className="py-5 px-[55px] bg-[#313133] text-white flex justify-between">
+    <div className="hidden py-5 p-[20px] lg:px-[55px] bg-[#313133] text-white lg:flex flex-col md:flex-row justify-between">
       <div className="h-[50px] w-[130px]">
         <img
-          className="h-full object-contain "
+          className="h-full object-contain"
           src="/images/footerLogo.png"
           alt=""
         />
