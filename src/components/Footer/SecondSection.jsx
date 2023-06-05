@@ -2,8 +2,8 @@ import { ImFacebook, ImYoutube, ImInstagram, ImTwitter } from "react-icons/all";
 
 const SecondSection = () => {
   return (
-    <div className="py-5 px-[55px] bg-[#535357] text-white">
-      <div className="hidden lg:flex flex-col item md:flex-row justify-between">
+    <div className="lg:pb-5 px-[55px] bg-[#535357] text-white">
+      <div className="hidden pt-5 lg:flex flex-col item md:flex-row justify-between">
         <div className="flex flex-col">
           <h3 className="text-xs font-bold mb-3">NEED HELP?</h3>
           <div className="flex flex-col">
@@ -98,7 +98,7 @@ const SecondSection = () => {
           </div>
         </div>
       </div>
-      <div className="my-6">
+      <div className="hidden lg:flex my-6">
         <div className="flex flex-col">
           <h3 className="text-sm font-semibold">JOIN US ON</h3>
           <div className="flex gap-6 mt-5">

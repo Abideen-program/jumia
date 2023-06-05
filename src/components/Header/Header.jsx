@@ -68,10 +68,12 @@ function Header() {
               <MdKeyboardArrowDown />
             </div>
 
-            <div className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
-              <AiOutlineShoppingCart className="text-2xl" />
-              <p>Cart</p>
-            </div>
+            <Link to="cart">
+              <div className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
+                <AiOutlineShoppingCart className="text-2xl" />
+                <p>Cart</p>
+              </div>
+            </Link>
           </div>
         </div>
         {acc && <Account />}
@@ -83,13 +85,15 @@ function Header() {
         <div className="flex items-center justify-between mb-2">
           <div className="flex gap-2 items-center">
             <GiHamburgerMenu className="text-2xl" />
-            <div className="h-[20px]">
-              <img
-                className="h-full"
-                src="/images/jumia-logo.png"
-                alt="jumia"
-              />
-            </div>
+            <Link to="/">
+              <div className="h-[20px]">
+                <img
+                  className="h-full"
+                  src="/images/jumia-logo.png"
+                  alt="jumia"
+                />
+              </div>
+            </Link>
           </div>
 
           <div className="flex items-center gap-3">
@@ -98,10 +102,11 @@ function Header() {
                 <HiOutlineUser className="text-2xl" />
               </div>
             </Link>
-
-            <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
-              <AiOutlineShoppingCart className="text-2xl" />
-            </div>
+            <Link to="cart">
+              <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
+                <AiOutlineShoppingCart className="text-2xl" />
+              </div>
+            </Link>
           </div>
         </div>
 
