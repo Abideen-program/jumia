@@ -3,7 +3,7 @@ import { BsChatLeftDots } from "react-icons/bs";
 import { clx } from "../utils/clx";
 
 const wrapperClass = clx(
-  "absolute top-16 right-16 bg-white w-[220px] rounded-md border border-stone-200 z-10"
+  "absolute top-[70px] right-16 bg-white w-[220px] rounded-md border border-stone-200 z-10"
 );
 const buttonClass = clx(
   "w-full bg-[#FF9900] rounded-md text-white px-6 py-3 hover:bg-[#E07E1B] shadow-md flex items-center gap-4"

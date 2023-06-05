@@ -1,16 +1,24 @@
 import { useState } from "react";
-import { MdSearch, MdKeyboardArrowDown } from "react-icons/md";
+import {
+  MdSearch,
+  MdKeyboardArrowDown,
+  FiUserCheck,
+  AiOutlineShoppingCart,
+  GiHamburgerMenu,
+  BiHelpCircle,
+} from "react-icons/all";
 import { HiOutlineUser } from "react-icons/hi";
-import { BiHelpCircle } from "react-icons/bi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { nameFormater } from "../utils/nameFormatter";
 
 import Banner from "./Banner";
 import Account from "./Account";
 import Help from "./Help";
 
 function Header() {
+  const user = useSelector((state) => state.user.user);
+
   const [acc, setAcc] = useState(false);
   const [help, setHelp] = useState(false);
 
@@ -23,6 +31,18 @@ function Header() {
     setHelp(!help);
     setAcc(false);
   };
+
+  //get the user email
+  const email = user?.email;
+
+  //format the user email to get a name
+  let name;
+  if (user) {
+    const formattedName = nameFormater(email);
+    name = formattedName.toUpperCase();
+  }
+
+  console.log(name);
 
   return (
     <>
@@ -54,9 +74,19 @@ function Header() {
               onClick={showAcc}
               className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100"
             >
-              <HiOutlineUser className="text-2xl" />
-              <p>Account</p>
-              <MdKeyboardArrowDown />
+              {user ? (
+                <div className="bg-[#D3D3D5] flex items-center justify-center gap-2 p-3 rounded-md w-max">
+                  <FiUserCheck className="text-2xl" />
+                  <p className="text-lg">Hi, {name}</p>
+                  <MdKeyboardArrowDown />
+                </div>
+              ) : (
+                <>
+                  <HiOutlineUser className="text-2xl" />
+                  <p>Account</p>
+                  <MdKeyboardArrowDown />
+                </>
+              )}
             </div>
 
             <div

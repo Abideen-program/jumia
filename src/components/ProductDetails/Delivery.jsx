@@ -9,8 +9,6 @@ const Delivery = () => {
 
   const statesLGA = NaijaStates.lgas(stateValue);
 
-  console.log(statesLGA.lgas);
-
   return (
     <div className="bg-white rounded-md flex-1">
       <div className="border-b-2 border-[#f1f1f2]">
@@ -107,9 +105,9 @@ const Delivery = () => {
           <p className="text-[10px]">
             Free return within 15 days for Official Store items and 7 days for
             other eligible items.
-            <p className="text-[9px] text-[#2671C2] cursor-pointer hover:underline">
+            <span className="text-[9px] text-[#2671C2] cursor-pointer hover:underline">
               See more
-            </p>
+            </span>
           </p>
         </div>
       </div>
