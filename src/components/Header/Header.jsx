@@ -75,9 +75,9 @@ function Header() {
               className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100"
             >
               {user ? (
-                <div className="bg-[#D3D3D5] flex items-center justify-center gap-2 p-3 rounded-md w-max">
+                <div className="hover:bg-[#D3D3D5] flex items-center justify-center gap-2 p-3 rounded-md w-max">
                   <FiUserCheck className="text-2xl" />
-                  <p className="text-lg">Hi, {name}</p>
+                  <p className="text-base font-medium">Hi, {name}</p>
                   <MdKeyboardArrowDown />
                 </div>
               ) : (

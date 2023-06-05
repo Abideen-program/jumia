@@ -2,14 +2,24 @@ import { useParams } from "react-router-dom";
 import { useProductDetails } from "../CustomHook/useProductDetails";
 import { AiOutlineHeart, MdOutlineAddShoppingCart } from "react-icons/all";
 import { motion } from "framer-motion";
+import {useDispatch, useSelector} from 'react-redux'
+
 import Promotion from "./Promotion";
 import Delivery from "./Delivery";
 import Footer from "../Footer/Footer";
+import { addItemToCart } from "../Store/Features/CartItemSlice";
 
 const ProductDetails = () => {
   const { productID } = useParams();
+  const dispatch = useDispatch()
+
+  const cartItems = useSelector((state) => state.cartItems.cartItems)
 
   const { isLoading, isError, data } = useProductDetails(productID);
+
+  const produtData = {...data?.data, id: productID}
+
+  console.log(cartItems)
 
   const realPrice = Math.ceil(
     data?.data.price / ((100 - data?.data.percent) / 100)
@@ -84,6 +94,7 @@ const ProductDetails = () => {
 
               <motion.button
                 whileTap={{ scale: 0.9 }}
+                onClick={() => dispatch(addItemToCart(produtData))}
                 className="flex items-center w-full bg-[#FF9900] rounded-md text-white px-4 py-2 hover:bg-[#E07E1B] shadow-lg mb-4"
               >
                 <MdOutlineAddShoppingCart className="text-lg font-medium" />
