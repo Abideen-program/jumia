@@ -1,8 +1,20 @@
 import { MdOutlineDelete, FaPlus, FaMinus } from "react-icons/all";
+import { useDispatch, useSelector } from "react-redux";
+import { setCartTotal } from "../Store/Features/CartItemSlice";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const CartSummary = () => {
-  const count = 1;
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const total = useSelector((state) => state.cartItems.cartTotal);
+  useEffect(() => {
+    const total = cartItems.reduce((prev, curr) => {
+      return prev + curr.quantity * curr.price;
+    }, 0);
+
+    dispatch(setCartTotal(total));
+  }, [cartItems]);
 
   return (
     <div className="flex flex-col gap-2">
@@ -19,13 +31,13 @@ const CartSummary = () => {
                 Delivery fee not included
               </p>
             </div>
-            <h4 className="md:text-xl font-medium">₦ 3000</h4>
+            <h4 className="md:text-xl font-medium">₦ {total}</h4>
           </div>
         </div>
 
         <div className="px-2 py-3">
           <button className="bg-[#FF9900] rounded-md text-sm font-medium text-white  hover:bg-[#E07E1B] shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full">
-            CHECKOUT (₦ 3000)
+            CHECKOUT (₦ {total})
           </button>
         </div>
       </div>

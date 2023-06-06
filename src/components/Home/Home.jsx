@@ -35,13 +35,13 @@ const Home = () => {
     });
   }, []);
 
-  useEffect(() => {
-    const count = cartItems.reduce((prev, curr) => {
-      return prev + curr.quantity;
-    }, 0);
+  // useEffect(() => {
+  //   const count = cartItems.reduce((prev, curr) => {
+  //     return prev + curr.quantity;
+  //   }, 0);
 
-    dispatch(setCartCount(count));
-  }, [cartItems]);
+  //   dispatch(setCartCount(count));
+  // }, [cartItems]);
 
   return (
     <>

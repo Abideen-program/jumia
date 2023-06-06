@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchItems } from "../../utils/fetchCartItems";
+
+const cartItems = fetchItems();
 
 const initialState = {
-  cartItems: [],
+  cartItems,
   cartTotal: 0,
   cartCount: 0,
 };
