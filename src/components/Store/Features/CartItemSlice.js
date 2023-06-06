@@ -7,6 +7,8 @@ const initialState = {
   cartItems,
   cartTotal: 0,
   cartCount: 0,
+  addNotification: false,
+  removeNotification: false,
 };
 
 const cartItemSlice = createSlice({
@@ -78,12 +80,24 @@ const cartItemSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
 
+    clearCart: (state) => {
+      state.cartItems = [];
+    },
+
     setCartCount: (state, action) => {
       state.cartCount = action.payload;
     },
 
     setCartTotal: (state, action) => {
       state.cartTotal = action.payload;
+    },
+
+    setNotification: (state, action) => {
+      state.addNotification = action.payload;
+    },
+
+    removeNotification: (state, action) => {
+      state.removeNotification = action.payload;
     },
   },
 });
@@ -94,6 +108,9 @@ export const {
   addItemToCart,
   reduceItemQuantity,
   removeItemFromCart,
+  clearCart,
   setCartCount,
   setCartTotal,
+  setNotification,
+  removeNotification,
 } = cartItemSlice.actions;

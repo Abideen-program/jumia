@@ -5,12 +5,53 @@ import {
   addItemToCart,
   reduceItemQuantity,
   removeItemFromCart,
+  setNotification,
+  removeNotification,
 } from "../Store/Features/CartItemSlice";
 
 const Item = ({ image, label, percent, price, quantity, item }) => {
   const realPrice = Math.ceil(price / ((100 - percent) / 100));
 
   const dispatch = useDispatch();
+
+  //logic handling removal of items
+  const removeItemHandler = () => {
+    dispatch(removeItemFromCart(item));
+
+    dispatch(removeNotification(true));
+
+    const timer = setTimeout(() => {
+      dispatch(removeNotification(false));
+      clearTimeout(timer);
+    }, 2000);
+  };
+
+  //logic handling reduction of product quantity
+  const reduceQuantityHandler = () => {
+    if (quantity > 1) {
+      dispatch(reduceItemQuantity(item));
+      dispatch(removeNotification(true));
+
+      const timer = setTimeout(() => {
+        dispatch(removeNotification(false));
+        clearTimeout(timer);
+      }, 2000);
+    } else {
+      return;
+    }
+  };
+
+  //logic handling the increment of product quantity
+  const increaseQuantityHandler = () => {
+    dispatch(addItemToCart(item));
+
+    dispatch(setNotification(true));
+
+    const timer = setTimeout(() => {
+      dispatch(setNotification(false));
+      clearTimeout(timer);
+    }, 2000);
+  };
 
   return (
     <>
@@ -65,7 +106,7 @@ const Item = ({ image, label, percent, price, quantity, item }) => {
       <div className="px-4 pb-4 flex justify-between items-center">
         <motion.div
           whileTap={{ scale: 0.7 }}
-          onClick={() => dispatch(removeItemFromCart(item))}
+          onClick={removeItemHandler}
           className="flex items-center gap-2 text-[#ff9900] cursor-pointer"
         >
           <MdOutlineDelete className="text-2xl" />
@@ -75,18 +116,20 @@ const Item = ({ image, label, percent, price, quantity, item }) => {
         <div className="flex items-center justify-center gap-5">
           <motion.div
             whileTap={{ scale: 0.7 }}
-            onClick={() => dispatch(reduceItemQuantity(item))}
+            onClick={reduceQuantityHandler}
             className={`${
               quantity > 1 ? "bg-[#ff9900]" : "bg-[#FAC58E]"
             } text-white h-[30px] w-[30px] flex items-center justify-center rounded-sm cursor-pointer`}
           >
             <FaMinus />
           </motion.div>
+
           <p className="text-medium">{quantity}</p>
+
           <motion.div
             whileTap={{ scale: 0.7 }}
             className={`bg-[#ff9900] text-white h-[30px] w-[30px] flex items-center justify-center rounded-sm cursor-pointer`}
-            onClick={() => dispatch(addItemToCart(item))}
+            onClick={increaseQuantityHandler}
           >
             <FaPlus />
           </motion.div>

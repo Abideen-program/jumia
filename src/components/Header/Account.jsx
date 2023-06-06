@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { HiOutlineUser, HiOutlineGift } from "react-icons/hi";
 import {
   MdOutlineFavoriteBorder,
   FaRegEnvelope,
   MdCreditCard,
 } from "react-icons/all";
+
 import { clx } from "../utils/clx";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { auth } from "../../firebaseConfig";
 import { signOut } from "firebase/auth";
 import { nameFormater } from "../utils/nameFormatter";
+import { clearCart } from "../Store/Features/CartItemSlice";
 
 const wrapperClass = clx(
   "absolute top-[70px] right-44 bg-white w-[220px] rounded-md border border-stone-200 z-10"
@@ -23,6 +25,8 @@ const pclasses = clx(
 const spanClass = clx("text-[grey] text-sm group-hover:text-[black]");
 
 const Account = () => {
+  const dispatch = useDispatch();
+
   //get the logged in user
   const user = useSelector((state) => state.user.user);
 
@@ -38,6 +42,8 @@ const Account = () => {
 
   const signOutHandler = () => {
     signOut(auth);
+    dispatch(clearCart());
+    localStorage.clear();
   };
 
   return (
