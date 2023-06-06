@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   MdSearch,
   MdKeyboardArrowDown,
@@ -9,16 +9,19 @@ import {
 } from "react-icons/all";
 import { HiOutlineUser } from "react-icons/hi";
 import { Link, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nameFormater } from "../utils/nameFormatter";
+import { setCartCount } from "../Store/Features/CartItemSlice";
 
 import Banner from "./Banner";
 import Account from "./Account";
 import Help from "./Help";
 
 function Header() {
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.user.user);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const count = useSelector((state) => state.cartItems.cartCount);
 
   const [acc, setAcc] = useState(false);
   const [help, setHelp] = useState(false);
@@ -43,7 +46,13 @@ function Header() {
     name = formattedName.toUpperCase();
   }
 
-  console.log(name);
+  useEffect(() => {
+    const count = cartItems.reduce((prev, curr) => {
+      return prev + curr.quantity;
+    }, 0);
+
+    dispatch(setCartCount(count));
+  }, [cartItems]);
 
   return (
     <>
@@ -105,7 +114,7 @@ function Header() {
                   <AiOutlineShoppingCart className="text-2xl" />
                   {cartItems.length !== 0 && (
                     <p className="absolute -top-1 -right-1 text-[9px] font-bold bg-[#ff9900] w-4 h-4 flex items-center justify-center border-2 border-white rounded-full text-white">
-                      0
+                      {count}
                     </p>
                   )}
                 </div>
@@ -146,7 +155,7 @@ function Header() {
                   <AiOutlineShoppingCart className="text-2xl" />
                   {cartItems.length !== 0 && (
                     <p className="absolute -top-1 -right-1 text-[9px] font-bold bg-[#ff9900] w-4 h-4 flex items-center justify-center border-2 border-white rounded-full text-white">
-                      0
+                      {count}
                     </p>
                   )}
                 </div>
