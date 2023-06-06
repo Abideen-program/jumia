@@ -1,7 +1,7 @@
 import { MdOutlineDelete, FaPlus, FaMinus } from "react-icons/all";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "../Store/Features/CartItemSlice";
+import { addItemToCart, reduceItemQuantity } from "../Store/Features/CartItemSlice";
 
 const Item = ({ image, label, percent, price, quantity, item }) => {
 
@@ -71,6 +71,7 @@ const Item = ({ image, label, percent, price, quantity, item }) => {
         <div className="flex items-center justify-center gap-5">
           <motion.div
             whileTap={{ scale: 0.7 }}
+            onClick={() => dispatch(reduceItemQuantity(item))}
             className={`${
               quantity > 1 ? "bg-[#ff9900]" : "bg-[#FAC58E]"
             } text-white h-[30px] w-[30px] flex items-center justify-center rounded-sm cursor-pointer`}
