@@ -19,8 +19,6 @@ const ProductDetails = () => {
 
   const produtData = {...data?.data, id: productID}
 
-  console.log(cartItems)
-
   const realPrice = Math.ceil(
     data?.data.price / ((100 - data?.data.percent) / 100)
   );
