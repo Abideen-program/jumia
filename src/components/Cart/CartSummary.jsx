@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCartTotal } from "../Store/Features/CartItemSlice";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const CartSummary = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const total = useSelector((state) => state.cartItems.cartTotal);
+  const user = useSelector((state) => state.user.user);
+
   useEffect(() => {
     const total = cartItems.reduce((prev, curr) => {
       return prev + curr.quantity * curr.price;
@@ -35,11 +38,13 @@ const CartSummary = () => {
           </div>
         </div>
 
-        <div className="px-2 py-3">
-          <button className="bg-[#FF9900] rounded-md text-sm font-medium text-white  hover:bg-[#E07E1B] shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full">
-            CHECKOUT (₦ {total})
-          </button>
-        </div>
+        <Link to={user ? "/checkout" : "/signin"}>
+          <motion.div whileTap={{ scale: 0.9 }} className="px-2 py-3">
+            <button className="bg-[#FF9900] rounded-md text-sm font-medium text-white  hover:bg-[#E07E1B] shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full">
+              CHECKOUT (₦ {total})
+            </button>
+          </motion.div>
+        </Link>
       </div>
 
       <div className="bg-white rounded-md flex flex-col shadow-xl">

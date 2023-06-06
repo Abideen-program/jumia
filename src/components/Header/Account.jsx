@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlineUser, HiOutlineGift } from "react-icons/hi";
 import {
@@ -26,6 +26,7 @@ const spanClass = clx("text-[grey] text-sm group-hover:text-[black]");
 
 const Account = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //get the logged in user
   const user = useSelector((state) => state.user.user);
@@ -44,6 +45,7 @@ const Account = () => {
     signOut(auth);
     dispatch(clearCart());
     localStorage.clear();
+    navigate("/");
   };
 
   return (

@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
 import Alert from "./components/Alert/Alert";
+import Checkout from "./components/Checkout/Checkout";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -18,6 +19,7 @@ const App = () => {
       ],
     },
     { path: "signin", element: <Login /> },
+    { path: "checkout", element: <Checkout /> },
   ]);
 
   return (
