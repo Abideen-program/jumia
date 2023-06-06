@@ -1,13 +1,16 @@
 import { MdOutlineDelete, FaPlus, FaMinus } from "react-icons/all";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { addItemToCart, reduceItemQuantity } from "../Store/Features/CartItemSlice";
+import {
+  addItemToCart,
+  reduceItemQuantity,
+  removeItemFromCart,
+} from "../Store/Features/CartItemSlice";
 
 const Item = ({ image, label, percent, price, quantity, item }) => {
-
   const realPrice = Math.ceil(price / ((100 - percent) / 100));
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -62,6 +65,7 @@ const Item = ({ image, label, percent, price, quantity, item }) => {
       <div className="px-4 pb-4 flex justify-between items-center">
         <motion.div
           whileTap={{ scale: 0.7 }}
+          onClick={() => dispatch(removeItemFromCart(item))}
           className="flex items-center gap-2 text-[#ff9900] cursor-pointer"
         >
           <MdOutlineDelete className="text-2xl" />

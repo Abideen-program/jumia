@@ -64,9 +64,20 @@ const cartItemSlice = createSlice({
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+
+    removeItemFromCart: (state, action) => {
+      //return items that the id does not equal to the item to remove
+      const newCartItems = state.cartItems.filter((item) => {
+        return item.id !== action.payload.id;
+      });
+
+      state.cartItems = newCartItems;
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
   },
 });
 
 export default cartItemSlice.reducer;
 
-export const { addItemToCart, reduceItemQuantity } = cartItemSlice.actions;
+export const { addItemToCart, reduceItemQuantity, removeItemFromCart } =
+  cartItemSlice.actions;
