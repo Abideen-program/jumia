@@ -18,6 +18,7 @@ import Help from "./Help";
 
 function Header() {
   const user = useSelector((state) => state.user.user);
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
 
   const [acc, setAcc] = useState(false);
   const [help, setHelp] = useState(false);
@@ -99,8 +100,15 @@ function Header() {
             </div>
 
             <Link to="cart">
-              <div className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
-                <AiOutlineShoppingCart className="text-2xl" />
+              <div className="  flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
+                <div className="relative">
+                  <AiOutlineShoppingCart className="text-2xl" />
+                  {cartItems.length !== 0 && (
+                    <p className="absolute -top-1 -right-1 text-[9px] font-bold bg-[#ff9900] w-4 h-4 flex items-center justify-center border-2 border-white rounded-full text-white">
+                      0
+                    </p>
+                  )}
+                </div>
                 <p>Cart</p>
               </div>
             </Link>
@@ -133,8 +141,15 @@ function Header() {
               </div>
             </Link>
             <Link to="cart">
-              <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
-                <AiOutlineShoppingCart className="text-2xl" />
+              <div className="  flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
+                <div className="relative">
+                  <AiOutlineShoppingCart className="text-2xl" />
+                  {cartItems.length !== 0 && (
+                    <p className="absolute -top-1 -right-1 text-[9px] font-bold bg-[#ff9900] w-4 h-4 flex items-center justify-center border-2 border-white rounded-full text-white">
+                      0
+                    </p>
+                  )}
+                </div>
               </div>
             </Link>
           </div>
