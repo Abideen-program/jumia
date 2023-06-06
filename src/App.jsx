@@ -4,6 +4,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
+import Alert from "./components/Alert/Alert";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -21,6 +22,7 @@ const App = () => {
 
   return (
     <>
+      <Alert />
       <RouterProvider router={router} />
     </>
   );
