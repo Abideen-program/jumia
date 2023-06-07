@@ -7,6 +7,8 @@ import {
   removeItemFromCart,
   setNotification,
   removeNotification,
+  setSaveRemove,
+  setItem,
 } from "../Store/Features/CartItemSlice";
 
 const Item = ({ image, label, percent, price, quantity, item }) => {
@@ -14,16 +16,11 @@ const Item = ({ image, label, percent, price, quantity, item }) => {
 
   const dispatch = useDispatch();
 
-  //logic handling removal of items
-  const removeItemHandler = () => {
-    dispatch(removeItemFromCart(item));
+  //logic handling the popup of saveRemove component
 
-    dispatch(removeNotification(true));
-
-    const timer = setTimeout(() => {
-      dispatch(removeNotification(false));
-      clearTimeout(timer);
-    }, 2000);
+  const showSaveRemove = () => {
+    dispatch(setSaveRemove(true));
+    dispatch(setItem(item));
   };
 
   //logic handling reduction of product quantity
@@ -106,7 +103,7 @@ const Item = ({ image, label, percent, price, quantity, item }) => {
       <div className="px-4 pb-4 flex justify-between items-center">
         <motion.div
           whileTap={{ scale: 0.7 }}
-          onClick={removeItemHandler}
+          onClick={showSaveRemove}
           className="flex items-center gap-2 text-[#ff9900] cursor-pointer"
         >
           <MdOutlineDelete className="text-2xl" />

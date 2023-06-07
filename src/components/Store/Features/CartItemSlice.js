@@ -10,6 +10,8 @@ const initialState = {
   addNotification: false,
   removeNotification: false,
   itemToRemove: null,
+  saveRemove: false,
+  item: null,
 };
 
 const cartItemSlice = createSlice({
@@ -104,6 +106,14 @@ const cartItemSlice = createSlice({
     setItemToRemove: (state, action) => {
       state.itemToRemove = action.payload;
     },
+
+    setSaveRemove: (state, action) => {
+      state.saveRemove = action.payload;
+    },
+
+    setItem: (state, action) => {
+      state.item = action.payload;
+    },
   },
 });
 
@@ -118,5 +128,7 @@ export const {
   setCartTotal,
   setNotification,
   removeNotification,
-  setItemToRemove
+  setItemToRemove,
+  setSaveRemove,
+  setItem,
 } = cartItemSlice.actions;

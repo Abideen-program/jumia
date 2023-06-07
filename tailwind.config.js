@@ -20,6 +20,12 @@ module.exports = {
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
     },
+
+    extend: {
+      colors: {
+        backDrop: "rgba(0, 0, 0, 0.75)",
+      },
+    },
   },
   plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 };
