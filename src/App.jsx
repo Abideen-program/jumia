@@ -6,6 +6,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
 import Alert from "./components/Alert/Alert";
 import Checkout from "./components/Checkout/Checkout";
+import SaveRemove from "./components/SaveRemove/SaveRemove";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -24,6 +25,7 @@ const App = () => {
 
   return (
     <>
+    <SaveRemove />
       <Alert />
       <RouterProvider router={router} />
     </>
