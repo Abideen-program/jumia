@@ -1,4 +1,4 @@
-import { MdOutlineDelete, AiOutlineHeart } from "react-icons/all";
+import { MdOutlineDelete, AiOutlineHeart, FaTimes } from "react-icons/all";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -29,7 +29,12 @@ const SaveRemove = () => {
       {saveRemove && (
         <Modal>
           <div className="flex flex-col gap-4 w-full">
-            <h4 className="text-sm md:text-lg font-semibold">Remove from cart</h4>
+            <div className="flex justify-between items-center">
+              <h4 className="text-sm md:text-lg font-semibold">
+                Remove from cart
+              </h4>
+              <FaTimes onClick={() => dispatch(setSaveRemove(false))} className="text-xl cursor-pointer"/>
+            </div>
 
             <p className="text-[10px] md:text-sm">
               Do you really want to remove this item from cart?

@@ -23,7 +23,7 @@ module.exports = {
 
     extend: {
       colors: {
-        backDrop: "rgba(0, 0, 0, 0.75)",
+        backDrop: "rgba(0, 0, 0, 0.45)",
       },
     },
   },
