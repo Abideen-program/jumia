@@ -66,10 +66,10 @@ const Delivery = () => {
             </p>
             <p className="text-[10px]">
               Delivery by <span className="font-medium">05 June</span> when you
-              order within next{" "}
-              <span className="font-medium">14hrs 56mins</span>
+              order within next
+              <span className="font-medium"> 14hrs 56mins</span>
             </p>
-            <p className="absolute top-0 right-0 text-[9px] text-[#2671C2] cursor-pointer hover:underline">
+            <p className="absolute top-0 right-0 lg:relative text-[9px] text-[#2671C2] cursor-pointer hover:underline">
               Details
             </p>
           </div>
@@ -89,7 +89,7 @@ const Delivery = () => {
               order within next{" "}
               <span className="font-medium">14hrs 56mins</span>
             </p>
-            <p className="absolute top-0 right-0 text-[9px] text-[#2671C2] cursor-pointer hover:underline">
+            <p className="absolute top-0 right-0 lg:relative text-[9px] text-[#2671C2] cursor-pointer hover:underline">
               Details
             </p>
           </div>
@@ -104,7 +104,7 @@ const Delivery = () => {
           <p className="text-sm font-medium">Return Policy</p>
           <p className="text-[10px]">
             Free return within 15 days for Official Store items and 7 days for
-            other eligible items.
+            other eligible items.{" "}
             <span className="text-[9px] text-[#2671C2] cursor-pointer hover:underline">
               See more
             </span>

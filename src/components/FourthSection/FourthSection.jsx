@@ -30,12 +30,6 @@ const FourthSection = ({ isLoading }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // if (isLoading) {
-  //   return (
-
-  //   );
-  // }
-
   return (
     <>
       {isLoading ? (

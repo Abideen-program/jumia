@@ -61,6 +61,7 @@ const Home = () => {
         price: loadedData[key].price,
         percent: loadedData[key].percent,
         image: loadedData[key].imageURL,
+        category: loadedData[key].category,
       });
       const copy = Object.assign([], loadedProducts)
       dispatch(setProduct(copy));
