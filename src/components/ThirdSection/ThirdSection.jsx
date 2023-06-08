@@ -6,9 +6,10 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const ThirdSection = () => {
-  const [products, setProducts] = useState([]);
+const ThirdSection = ({ isLoading }) => {
+  const products = useSelector((state) => state.products.products);
 
   const width = window.innerWidth;
   let count;
@@ -20,33 +21,7 @@ const ThirdSection = () => {
   if (width === 375) count = 2;
   if (width === 320) count = 1;
 
-  const fetchData = () => {
-    return axios.get(
-      "https://jumia-clone-d9ecf-default-rtdb.firebaseio.com/second.json"
-    );
-  };
-
-  const { isLoading, data } = useQuery("second", fetchData, {
-    refetchOnWindowFocus: false,
-  });
-
-  const loadedData = data?.data;
-
-  const loadedProducts = [];
-
-  useEffect(() => {
-    for (const key in loadedData) {
-      loadedProducts.push({
-        id: key,
-        title: loadedData[key].title,
-        label: loadedData[key].label,
-        price: loadedData[key].price,
-        percent: loadedData[key].percent,
-        image: loadedData[key].imageURL,
-      });
-      setProducts(loadedProducts);
-    }
-  }, [loadedData]);
+  console.log(products)
 
   return (
     <>
@@ -60,19 +35,21 @@ const ThirdSection = () => {
         </h3>
       )}
       <Wrapper count={count}>
-        {products.map((product) => {
-          return (
-            <Link key={product.id} to={`/${product.id}`}>
-              <SlideItem
-                key={product.id}
-                title={product.title}
-                image={product.image}
-                price={product.price}
-                percent={product.percent}
-              />
-            </Link>
-          );
-        })}
+        {products
+          ?.filter((product, index) => index <= 14)
+          .map((product) => {
+            return (
+              <Link key={product.id} to={`/${product.id}`}>
+                <SlideItem
+                  key={product.id}
+                  title={product.title}
+                  image={product.image}
+                  price={product.price}
+                  percent={product.percent}
+                />
+              </Link>
+            );
+          })}
       </Wrapper>
     </>
   );
