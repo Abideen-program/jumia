@@ -73,7 +73,7 @@ const Home = () => {
         <FirstSection />
         <SecondSection />
         <ThirdSection isLoading={isLoading}/>
-        <FourthSection />
+        <FourthSection isLoading={isLoading}/>
         <FifthSection />
         <SixthSection />
         <SeventhSection />

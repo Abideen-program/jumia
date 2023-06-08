@@ -2,9 +2,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SlideItem from "../CarouselWrapper/SlideItem";
 import Wrapper from "../CarouselWrapper/Wrapper";
-import { useQuery } from "react-query";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 

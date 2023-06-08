@@ -3,8 +3,12 @@ import Wrapper from "../CarouselWrapper/Wrapper";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import formartTime from "../utils/formartTime";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-const FourthSection = () => {
+const FourthSection = ({ isLoading }) => {
+  const products = useSelector((state) => state.products.products);
+
   const width = window.innerWidth;
   let count;
 
@@ -26,119 +30,51 @@ const FourthSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // if (isLoading) {
+  //   return (
+
+  //   );
+  // }
+
   return (
     <>
-      <h3 className="bg-[#E61601] rounded-t-md text-white text-xs md:text-lg py-2 px-4 flex items-center justify-between">
-        <span className="font-semibold">Flash Sales</span>
-        <span className="font-light flex gap-1">
-          Time Left:
-          <p className="font-semibold">
-            {countDown.hours}h : {countDown.minutes}m : {countDown.seconds}s
-          </p>
-        </span>
-        <span className="md:text-[15px] flex items-center">
-          SEE ALL <MdKeyboardArrowRight />
-        </span>
-      </h3>
-      <Wrapper count={count}>
-        <SlideItem
-          title="Men's Loose Breathable S.."
-          image="/images/white-shoe.jpg"
-          price={3660}
-          percent={59}
-        />
-
-        <SlideItem
-          title="2 Pieces 2-in-1 Unisex Bu.."
-          image="/images/hats.jpg"
-          price={3599}
-          percent={49}
-        />
-
-        <SlideItem
-          title="Itel 1.7 Litres (IKE17U1) EI.."
-          image="/images/kettle.jpg"
-          price={6244}
-          percent={46}
-        />
-
-        <SlideItem
-          title="Women Shoes Ladies Sne."
-          image="/images/black-shoe.jpg"
-          price={3100}
-          percent={54}
-        />
-
-        <SlideItem
-          title="Simple Hydrating Light M.."
-          image="/images/hydrate.jpg"
-          price={5500}
-          percent={21}
-        />
-
-        <SlideItem
-          title="Buddhist Jewelry Mens' R.."
-          image="/images/sliverbracelet.jpg"
-          price={2100}
-          percent={19}
-        />
-
-        <SlideItem
-          title="Nivea Perfect & Radiant.."
-          image="/images/nivea.jpg"
-          price={2830}
-          percent={2}
-        />
-
-        <SlideItem
-          title="Nivea Nourishing Cocoa.."
-          image="/images/niveacocoa.jpg"
-          price={3980}
-          percent={17}
-        />
-
-        <SlideItem
-          title="Men Casual Work Leath.."
-          image="/images/leathershoe.jpg"
-          price={6300}
-          percent={24}
-        />
-
-        <SlideItem
-          title="Men's Casual Board Runn.."
-          image="/images/white-trainers.jpg"
-          price={4999}
-          percent={74}
-        />
-
-        <SlideItem
-          title="Philly J84 White 10000 M.."
-          image="/images/powerbank.jpg"
-          price={4700}
-          percent={48}
-        />
-
-        <SlideItem
-          title="Upper Arm Style Autom.."
-          image="/images/pressure.jpg"
-          price={7251}
-          percent={47}
-        />
-
-        <SlideItem
-          title="Socks Set of 6 - Multicolor"
-          image="/images/socks.jpg"
-          price={1299}
-          percent={81}
-        />
-
-        <SlideItem
-          title="Wedding Ring Set Diamo..."
-          image="/images/rings.jpg"
-          price={6500}
-          percent={57}
-        />
-      </Wrapper>
+      {isLoading ? (
+        <h3 className="my-4 text-center bg-green-300 text-white font-medium">
+          Loading products!!!
+        </h3>
+      ) : (
+        <>
+          <h3 className="bg-[#E61601] rounded-t-md text-white text-xs md:text-lg py px-4 flex items-center justify-between">
+            <span className="font-semibold">Flash Sales</span>
+            <span className="font-light flex gap-1">
+              Time Left:
+              <p className="font-semibold">
+                {countDown.hours}h : {countDown.minutes}m : {countDown.seconds}s
+              </p>
+            </span>
+            <span className="md:text-[15px] flex items-center">
+              SEE ALL <MdKeyboardArrowRight />
+            </span>
+          </h3>
+          <Wrapper count={count}>
+            {products
+              ?.filter((product, index) => index > 14)
+              .map((product) => {
+                return (
+                  <Link key={product.id} to={`/${product.id}`}>
+                    <SlideItem
+                      key={product.id}
+                      title={product.title}
+                      image={product.image}
+                      price={product.price}
+                      percent={product.percent}
+                    />
+                  </Link>
+                );
+              })}
+          </Wrapper>
+        </>
+      )}
     </>
   );
 };
