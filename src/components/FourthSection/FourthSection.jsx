@@ -52,7 +52,7 @@ const FourthSection = ({ isLoading }) => {
           </h3>
           <Wrapper count={count}>
             {products
-              ?.filter((product, index) => index > 14)
+              ?.filter((product, index) => index > 14 && index <= 29)
               .map((product) => {
                 return (
                   <Link key={product.id} to={`/${product.id}`}>

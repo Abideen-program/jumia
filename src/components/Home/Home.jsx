@@ -75,7 +75,7 @@ const Home = () => {
         <SecondSection />
         <ThirdSection isLoading={isLoading}/>
         <FourthSection isLoading={isLoading}/>
-        <FifthSection />
+        <FifthSection isLoading={isLoading}/>
         <SixthSection />
         <SeventhSection />
       </div>
