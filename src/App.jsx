@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <>
-    <SaveRemove />
+      <SaveRemove />
       <Alert />
       <RouterProvider router={router} />
     </>

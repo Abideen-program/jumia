@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FiPhone, RiArrowGoBackFill } from "react-icons/all";
 const Header = () => {
   return (
-    <div className="bg-white px-[50px] py-3 flex items-center justify-between relative right-0 left-0 z-20">
+    <div className="bg-white px-[20px] lg:px-[50px] py-3 flex items-center justify-between relative right-0 left-0 z-20">
       <Link to={"/"}>
         <div className="h-[50px]">
           <img className="h-full" src="/images/jumia-logo.png" alt="jumia" />
