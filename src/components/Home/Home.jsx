@@ -46,6 +46,8 @@ const Home = () => {
 
   const { isLoading, data } = useQuery("fetch-products", fetchData, {
     refetchOnWindowFocus: false,
+    staleTime: 3600000,
+    cacheTime: 3600000,
   });
 
   const loadedData = data?.data;
@@ -63,7 +65,7 @@ const Home = () => {
         image: loadedData[key].imageURL,
         category: loadedData[key].category,
       });
-      const copy = Object.assign([], loadedProducts)
+      const copy = Object.assign([], loadedProducts);
       dispatch(setProduct(copy));
     }
   }, [loadedData]);
@@ -73,9 +75,9 @@ const Home = () => {
       <div className="my-4 w-full px-[0px] lg:px-[55px]">
         <FirstSection />
         <SecondSection />
-        <ThirdSection isLoading={isLoading}/>
-        <FourthSection isLoading={isLoading}/>
-        <FifthSection isLoading={isLoading}/>
+        <ThirdSection isLoading={isLoading} />
+        <FourthSection isLoading={isLoading} />
+        <FifthSection isLoading={isLoading} />
         <SixthSection />
         <SeventhSection />
       </div>

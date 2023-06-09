@@ -24,6 +24,8 @@ const SecondSection = () => {
 
   const { isLoading, data } = useQuery("first", fetchData, {
     refetchOnWindowFocus: false,
+    staleTime: 3600000,
+    cacheTime: 3600000
   });
 
   const loadedData = data?.data;
