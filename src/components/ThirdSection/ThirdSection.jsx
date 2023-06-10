@@ -18,8 +18,6 @@ const ThirdSection = ({ isLoading }) => {
   if (width === 375) count = 2;
   if (width === 320) count = 1;
 
-  console.log(products)
-
   return (
     <>
       {isLoading ? (

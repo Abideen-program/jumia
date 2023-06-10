@@ -1,14 +1,14 @@
-import { useState } from "react";
-import NaijaStates from "naija-state-local-government";
+// import { useState } from "react";
+// import NaijaStates from "naija-state-local-government";
 import { FaCheckCircle } from "react-icons/all";
 import Input from "./Input";
+import Select from "./Select";
 
 const Form = () => {
-  const [stateValue, setStateValue] = useState("Abia");
-
-  const states = NaijaStates.states();
-
-  const statesLGA = NaijaStates.lgas(stateValue);
+  const stateValueHandler = (e) => {
+    if (!state) return;
+    setStateValue(e.target.value);
+  };
 
   return (
     <div className="px-[20px] lg:px-[55px] mt-3">
@@ -81,7 +81,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="mb-8">
+          <div>
             <Input
               id={"info"}
               label={"Additional Information"}
@@ -91,29 +91,8 @@ const Form = () => {
             />
           </div>
 
-          <div className="flex gap-10">
-            <select
-              onChange={(e) => setStateValue(e.target.value)}
-              className="focus:border-[#FF9900] focus:outline-0 border border-black p-2 rounded-md w-full"
-            >
-              {states.map((state) => {
-                return (
-                  <option key={state} value={state}>
-                    {state}
-                  </option>
-                );
-              })}
-            </select>
-
-            <select className="focus:border-[#FF9900] focus:outline-0 border border-black p-2 rounded-md w-full">
-              {statesLGA.lgas.map((lga) => {
-                return (
-                  <option key={lga} value={lga}>
-                    {lga}
-                  </option>
-                );
-              })}
-            </select>
+          <div className="">
+            <Select state={true} onChange={stateValueHandler} />
           </div>
         </div>
       </form>
