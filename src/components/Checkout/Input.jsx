@@ -1,12 +1,30 @@
-import React from "react";
+import { clx } from "../utils/clx";
 
-function Input() {
+const divClass = clx(
+  "relative group border border-[#A3A3A6] hover:border-[#ff9900] hover:outline hover:outline-offset-1 hover:outline-1 hover:outline-[#ff9900] rounded-md text-[#A3A3A3] my-4 w-full"
+);
+
+const labelClass = clx(
+  "group-hover:text-[#ff9900] absolute -top-[10px] left-6 text-xs font-normal bg-white text-[#A3A3A6]"
+);
+
+const inputClass = clx("w-full p-4 outline-none font-normal text-black");
+
+const Input = ({id, placeholder, label, type, onChange}) => {
   return (
-    <div className="relative group border border-[#A3A3A6] hover:border-[#ff9900] hover:outline hover:outline-offset-1 hover:outline-1 hover:outline-[#ff9900] rounded-md text-[#A3A3A3]">
-      <label htmlFor="fname" className="group-hover:text-[#ff9900] absolute -top-[10px] left-6 text-xs font-normal bg-white text-[#A3A3A6]">First Name</label>
-      <input id='fname' type="text" placeholder="Enter your First Name"  className="w-full p-4 outline-none font-normal text-[#A3A3A6]"/>
+    <div className={divClass}>
+      <label htmlFor={id} className={labelClass}>
+        {label}
+      </label>
+      <input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        onChange={onChange}
+        className={inputClass}
+      />
     </div>
   );
-}
+};
 
 export default Input;
