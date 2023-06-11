@@ -10,7 +10,9 @@ const labelClass = clx(
   "group-hover:text-[#ff9900] absolute -top-[10px] left-6 text-xs font-normal bg-white text-[#A3A3A6]"
 );
 
-const inputClass = clx("w-full p-4 outline-none font-normal text-black");
+const selectClass = clx(
+  "focus:border-[#FF9900] focus:outline-0 border border p-2 rounded-md w-full"
+);
 
 const Select = ({ label }) => {
   const [stateValue, setStateValue] = useState("Abia");
@@ -25,7 +27,7 @@ const Select = ({ label }) => {
         <label className={labelClass}>Region</label>
         <select
           onChange={(e) => setStateValue(e.target.value)}
-          className="focus:border-[#FF9900] focus:outline-0 border border-black p-2 rounded-md w-full"
+          className={selectClass}
         >
           <option value="">Please Select</option>
           {states?.map((state) => {
@@ -40,7 +42,7 @@ const Select = ({ label }) => {
 
       <div className={divClass}>
         <label className={labelClass}>City</label>
-        <select className="focus:border-[#FF9900] focus:outline-0 border border-black p-2 rounded-md w-full">
+        <select className={selectClass}>
           <option value="">Please Select</option>
           {statesLGA.lgas?.map((state) => {
             return (

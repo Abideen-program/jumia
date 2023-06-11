@@ -1,5 +1,7 @@
 import { clx } from "../utils/clx";
 
+import { useState } from "react";
+
 const divClass = clx(
   "relative group border border-[#A3A3A6] hover:border-[#ff9900] hover:outline hover:outline-offset-1 hover:outline-1 hover:outline-[#ff9900] rounded-md text-[#A3A3A3] my-4 w-full"
 );
@@ -10,19 +12,13 @@ const labelClass = clx(
 
 const inputClass = clx("w-full p-4 outline-none font-normal text-black");
 
-const Input = ({id, placeholder, label, type, onChange}) => {
+const Input = ({ id, label, ...props }) => {
   return (
     <div className={divClass}>
       <label htmlFor={id} className={labelClass}>
         {label}
       </label>
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-        className={inputClass}
-      />
+      <input className={inputClass} id={id} {...props} />
     </div>
   );
 };
