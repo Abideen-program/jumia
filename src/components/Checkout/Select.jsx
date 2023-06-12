@@ -14,8 +14,12 @@ const selectClass = clx(
   "focus:border-[#FF9900] focus:outline-0 border border p-2 rounded-md w-full"
 );
 
-const Select = ({ label }) => {
+const Select = () => {
   const [stateValue, setStateValue] = useState("Abia");
+  // const [state, setState] = useState("");
+  const [lga, setLga] = useState("");
+
+  console.log({stateValue, lga})
 
   const states = NaijaStates.states();
 
@@ -42,7 +46,7 @@ const Select = ({ label }) => {
 
       <div className={divClass}>
         <label className={labelClass}>City</label>
-        <select className={selectClass}>
+        <select onChange={(e) => setLga(e.target.value)} className={selectClass}>
           <option value="">Please Select</option>
           {statesLGA.lgas?.map((state) => {
             return (

@@ -2,23 +2,43 @@ import { useState } from "react";
 import { FaCheckCircle } from "react-icons/all";
 import Input from "./Input";
 import Select from "./Select";
+import CheckoutSummary from "./CheckoutSummary";
 
 const Form = () => {
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [number, setNumber] = useState(null);
-  const [addNumber, setAddNumber] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [info, setInfo] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [number, setNumber] = useState("");
+  const [addNumber, setAddNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [info, setInfo] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log({ firstName, lastName, number, addNumber, address, info });
+    setFirstName("");
+    setLastName("");
+    setNumber("");
+    setAddNumber("");
+    setAddress("");
+    setInfo("");
+  };
+
+  const cancelHandler = (e) => {
+    e.preventDefault();
+    setFirstName("");
+    setLastName("");
+    setNumber("");
+    setAddNumber("");
+    setAddress("");
+    setInfo("");
   };
 
   return (
-    <div className="px-[20px] lg:px-[55px] mt-[84px]">
-      <form onSubmit={submitHandler} className=" bg-white rounded-md mb-8">
+    <div className="px-[20px] lg:px-[55px] mt-[84px] flex gap-3">
+      <form
+        onSubmit={submitHandler}
+        className=" bg-white rounded-md mb-8 flex-1"
+      >
         <div className="">
           <div className="flex items-center px-4 py-3 gap-2 border-b">
             <FaCheckCircle className="text-[#7A7A7F]" />
@@ -37,6 +57,7 @@ const Form = () => {
               type="text"
               onChange={(e) => setFirstName(e.target.value)}
               required={true}
+              value={firstName}
             />
 
             <Input
@@ -46,6 +67,7 @@ const Form = () => {
               type={"text"}
               onChange={(e) => setLastName(e.target.value)}
               required={true}
+              value={lastName}
             />
           </div>
 
@@ -62,6 +84,7 @@ const Form = () => {
                 type={"phone"}
                 onChange={(e) => setNumber(e.target.value)}
                 required={true}
+                value={number}
               />
             </div>
 
@@ -77,6 +100,7 @@ const Form = () => {
                 type={"phone"}
                 onChange={(e) => setAddNumber(e.target.value)}
                 required={true}
+                value={addNumber}
               />
             </div>
           </div>
@@ -89,6 +113,7 @@ const Form = () => {
               type={"text"}
               onChange={(e) => setAddress(e.target.value)}
               required={true}
+              value={address}
             />
           </div>
 
@@ -100,6 +125,7 @@ const Form = () => {
               type={"text"}
               onChange={(e) => setInfo(e.target.value)}
               required={false}
+              value={info}
             />
           </div>
 
@@ -109,7 +135,10 @@ const Form = () => {
         </div>
 
         <div className="flex justify-end gap-3 p-5">
-          <button className="p-4 rounded-md text-sm text-[#ff9900] font-semibold hover:bg-[#FCDBB9]">
+          <button
+            className="p-4 rounded-md text-sm text-[#ff9900] font-semibold hover:bg-[#FCDBB9]"
+            onClick={cancelHandler}
+          >
             CANCEL
           </button>
           <button
@@ -120,6 +149,10 @@ const Form = () => {
           </button>
         </div>
       </form>
+
+      <div>
+        <CheckoutSummary />
+      </div>
     </div>
   );
 };
