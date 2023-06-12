@@ -34,22 +34,24 @@ const Form = () => {
   };
 
   return (
-    <div className="px-[20px] lg:px-[55px] mt-[84px] flex gap-3">
+    <div className="px-[20px] lg:px-[55px] mt-[60px] md:mt-[84px] flex flex-col lg:flex-row gap-0 lg:gap-3">
       <form
         onSubmit={submitHandler}
-        className=" bg-white rounded-md mb-8 flex-1"
+        className=" bg-white rounded-md mb-1 lg:mb-8 flex-1"
       >
         <div className="">
           <div className="flex items-center px-4 py-3 gap-2 border-b">
             <FaCheckCircle className="text-[#7A7A7F]" />
-            <p className="text-sm font-medium">1. DELIVERY ADDRESS</p>
+            <p className="text-[13px] md:text-sm font-medium">
+              1. DELIVERY ADDRESS
+            </p>
           </div>
         </div>
 
-        <div className="px-4 py-2 mt-2 font-medium text-sm border-b-2">
+        <div className="px-4 py-2 mt-2 font-medium text-[13px] md:text-sm border-b-2">
           <h3>ADD NEW ADDRESS</h3>
 
-          <div className="flex gap-10 w-full">
+          <div className="flex flex-col lg:flex-row lg:gap-10 w-full">
             <Input
               id="fname"
               label="First Name"
@@ -71,9 +73,9 @@ const Form = () => {
             />
           </div>
 
-          <div className="flex items-start gap-10 w-full">
-            <div className="w-full flex gap-10 items-start justify-start">
-              <div className="flex flex-col gap-[9px] mt-2 ml-5">
+          <div className="flex flex-col lg:flex-row items-start lg:gap-10 w-full">
+            <div className="w-full flex gap-3 md:gap-10 items-start justify-start">
+              <div className="flex flex-col gap-[9px] mt-2 ml-3 md:ml-5">
                 <h4 className="text-[#A3A3A3] text-xs">Prefix</h4>
                 <p>+234</p>
               </div>
@@ -88,8 +90,8 @@ const Form = () => {
               />
             </div>
 
-            <div className="w-full flex gap-10 items-start justify-start">
-              <div className="flex flex-col gap-[9px] mt-2 ml-5">
+            <div className="w-full flex gap-3 md:gap-10 items-start justify-start">
+              <div className="flex flex-col gap-[9px] mt-2 ml-3 md:ml-5">
                 <h4 className="text-[#A3A3A3] text-xs">Prefix</h4>
                 <p>+234</p>
               </div>
@@ -134,16 +136,16 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="flex justify-end gap-3 p-5">
+        <div className="flex justify-end gap-3 px-4 py-2 md:p-5 ">
           <button
-            className="p-4 rounded-md text-sm text-[#ff9900] font-semibold hover:bg-[#FCDBB9]"
+            className="rounded-md text-xs md:text-sm text-[#ff9900] font-semibold p-3 md:p-4 hover:bg-[#FCDBB9]"
             onClick={cancelHandler}
           >
             CANCEL
           </button>
           <button
             type="sumit"
-            className="bg-[#ff9900] text-sm text-white font-semibold p-4 rounded-md hover:bg-[#E07E1B]"
+            className="bg-[#ff9900] text-xs md:text-sm text-white font-semibold p-3 md:p-4 rounded-md hover:bg-[#E07E1B]"
           >
             SAVE
           </button>

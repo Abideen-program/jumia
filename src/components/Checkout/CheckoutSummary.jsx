@@ -7,7 +7,7 @@ const CheckoutSummary = () => {
   const count = useSelector((state) => state.cartItems.cartCount);
   const total = useSelector((state) => state.cartItems.cartTotal);
   return (
-    <div className="flex flex-col gap-2 w-[270px]">
+    <div className="flex flex-col gap-2 w-full lg:w-[270px]">
       <div className=" bg-white rounded-lg flex flex-col shadow-xl">
         <div className="p-2 border">
           <h3 className="text-sm font-medium">Order Summary</h3>
@@ -23,7 +23,7 @@ const CheckoutSummary = () => {
           <p className="text-lg font-semibold">₦ {total}</p>
         </div>
 
-        <div className="p-2 flex items-center justify-between border-b gap-2">
+        <div className="p-2 flex items-center lg:justify-between border-b gap-2">
           <MdOutlineDiscount className="text-2xl text-[#ff9900]" />
           <p className="text-[10px] font-light">
             You will be able to add a voucher when selecting your payment
@@ -31,7 +31,7 @@ const CheckoutSummary = () => {
           </p>
         </div>
 
-        <div className="px-2 py-3">
+        <div className="px-2 py-3 inline-block">
           <Link to={"/"}>
             <motion.button
               whileTap={{ scale: 0.9 }}

@@ -10,7 +10,7 @@ const labelClass = clx(
   "group-hover:text-[#ff9900] absolute -top-[10px] left-6 text-xs font-normal bg-white text-[#A3A3A6]"
 );
 
-const inputClass = clx("w-full p-4 outline-none font-normal text-black");
+const inputClass = clx("w-full p-3 md:p-4 outline-none font-normal text-black");
 
 const Input = ({ id, label, ...props }) => {
   return (

@@ -26,7 +26,7 @@ const Select = () => {
   const statesLGA = NaijaStates.lgas(stateValue);
 
   return (
-    <div className="flex gap-10 w-full">
+    <div className="flex flex-col md:flex-row gap-0 md:gap-10 w-full">
       <div className={divClass}>
         <label className={labelClass}>Region</label>
         <select
