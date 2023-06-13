@@ -32,24 +32,14 @@ const Form = () => {
     actions.resetForm();
   };
 
-  const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues: formValues,
-    validateOnBlur: true,
-    validateOnChange: validationAttempt,
-    validationSchema,
-    onSubmit,
-  });
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   console.log({ firstName, lastName, number, addNumber, address, info });
-  //   setFirstName("");
-  //   setLastName("");
-  //   setNumber("");
-  //   setAddNumber("");
-  //   setAddress("");
-  //   setInfo("");
-  // };
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: formValues,
+      validateOnBlur: true,
+      validateOnChange: validationAttempt,
+      validationSchema,
+      onSubmit,
+    });
 
   const cancelHandler = (e) => {
     e.preventDefault();
@@ -89,8 +79,9 @@ const Form = () => {
               onBlur={handleBlur}
               value={values.firstName}
               errorMessage={errors.firstName}
+              touched={touched.firstName}
               className={
-                errors.firstName
+                errors.firstName && touched.firstName
                   ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                   : ""
               }
@@ -107,8 +98,9 @@ const Form = () => {
               onBlur={handleBlur}
               value={values.lastName}
               errorMessage={errors.lastName}
+              touched={touched.lastName}
               className={
-                errors.lastName
+                errors.lastName && touched.lastName
                   ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                   : ""
               }
@@ -132,8 +124,9 @@ const Form = () => {
                 onBlur={handleBlur}
                 value={values.number}
                 errorMessage={errors.number}
+                touched={touched.number}
                 className={
-                  errors.number
+                  errors.number && touched.number
                     ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                     : ""
                 }
@@ -156,8 +149,9 @@ const Form = () => {
                 onBlur={handleBlur}
                 value={values.addNumber}
                 errorMessage={errors.addNumber}
+                touched={touched.addNumber}
                 className={
-                  errors.addNumber
+                  errors.addNumber && touched.addNumber
                     ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                     : ""
                 }
@@ -177,8 +171,9 @@ const Form = () => {
               onBlur={handleBlur}
               value={values.address}
               errorMessage={errors.address}
+              touched={touched.address}
               className={
-                errors.address
+                errors.address && touched.address
                   ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                   : ""
               }
@@ -208,8 +203,9 @@ const Form = () => {
 
         <div className="flex justify-end gap-3 px-4 py-2 md:p-5 ">
           <button
+            type="button"
             className="rounded-md text-xs md:text-sm text-[#ff9900] font-semibold p-3 md:p-4 hover:bg-[#FCDBB9]"
-            onClick={cancelHandler}
+            // onClick={cancelHandler}
           >
             CANCEL
           </button>
