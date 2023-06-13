@@ -52,7 +52,7 @@ const SecondSection = () => {
   }
 
   return (
-    <div className="my-4">
+    <div className="mx-2 lg:mx-0 my-4">
       <Wrapper count={count}>
         {images.map((image) => {
           return (

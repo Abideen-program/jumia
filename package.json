@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "firebase": "^9.22.0",
+    "formik": "^2.4.1",
     "framer-motion": "^10.12.16",
     "naija-state-local-government": "^1.1.2",
     "react": "^18.2.0",
@@ -24,7 +25,8 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.0-rc.2",
-    "tailwind-scrollbar": "^3.0.4"
+    "tailwind-scrollbar": "^3.0.4",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

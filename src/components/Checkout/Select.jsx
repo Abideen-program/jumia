@@ -19,8 +19,6 @@ const Select = () => {
   // const [state, setState] = useState("");
   const [lga, setLga] = useState("");
 
-  console.log({stateValue, lga})
-
   const states = NaijaStates.states();
 
   const statesLGA = NaijaStates.lgas(stateValue);

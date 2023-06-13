@@ -4,6 +4,9 @@ import Input from "./Input";
 import Select from "./Select";
 import CheckoutSummary from "./CheckoutSummary";
 
+import { useFormik } from "formik";
+import { validationSchema } from "./schema";
+
 const Form = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -12,16 +15,41 @@ const Form = () => {
   const [address, setAddress] = useState("");
   const [info, setInfo] = useState("");
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log({ firstName, lastName, number, addNumber, address, info });
-    setFirstName("");
-    setLastName("");
-    setNumber("");
-    setAddNumber("");
-    setAddress("");
-    setInfo("");
+  const [validationAttempt, setValidationAttempt] = useState(false);
+
+  const formValues = {
+    firstName: "",
+    lastName: "",
+    number: "",
+    addNumber: "",
+    address: "",
+    info: "",
   };
+
+  const onSubmit = async (values, actions) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log(values);
+    actions.resetForm();
+  };
+
+  const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: formValues,
+    validateOnBlur: true,
+    validateOnChange: validationAttempt,
+    validationSchema,
+    onSubmit,
+  });
+
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   console.log({ firstName, lastName, number, addNumber, address, info });
+  //   setFirstName("");
+  //   setLastName("");
+  //   setNumber("");
+  //   setAddNumber("");
+  //   setAddress("");
+  //   setInfo("");
+  // };
 
   const cancelHandler = (e) => {
     e.preventDefault();
@@ -36,7 +64,7 @@ const Form = () => {
   return (
     <div className="px-[20px] lg:px-[55px] mt-[60px] md:mt-[84px] flex flex-col lg:flex-row gap-0 lg:gap-3">
       <form
-        onSubmit={submitHandler}
+        onSubmit={handleSubmit}
         className=" bg-white rounded-md mb-1 lg:mb-8 flex-1"
       >
         <div className="">
@@ -53,23 +81,39 @@ const Form = () => {
 
           <div className="flex flex-col lg:flex-row lg:gap-10 w-full">
             <Input
-              id="fname"
+              id="firstName"
               label="First Name"
               placeholder="Enter your First Name"
               type="text"
-              onChange={(e) => setFirstName(e.target.value)}
-              required={true}
-              value={firstName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.firstName}
+              errorMessage={errors.firstName}
+              className={
+                errors.firstName
+                  ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
+                  : ""
+              }
+              // onChange={(e) => setFirstName(e.target.value)}
+              // required={true}
             />
 
             <Input
-              id={"lname"}
-              label={"Last Name"}
-              placeholder={"Enter your Last Name"}
-              type={"text"}
-              onChange={(e) => setLastName(e.target.value)}
-              required={true}
-              value={lastName}
+              id="lastName"
+              label="Last Name"
+              placeholder="Enter your Last Name"
+              type="text"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.lastName}
+              errorMessage={errors.lastName}
+              className={
+                errors.lastName
+                  ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
+                  : ""
+              }
+              // onChange={(e) => setLastName(e.target.value)}
+              // required={true}
             />
           </div>
 
@@ -80,13 +124,21 @@ const Form = () => {
                 <p>+234</p>
               </div>
               <Input
-                id={"pnumber"}
-                label={"Phone Number"}
-                placeholder={"Enter your Phone Number"}
-                type={"phone"}
-                onChange={(e) => setNumber(e.target.value)}
-                required={true}
-                value={number}
+                id="number"
+                label="Phone Number"
+                placeholder="Enter your Phone Number"
+                type="phone"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.number}
+                errorMessage={errors.number}
+                className={
+                  errors.number
+                    ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
+                    : ""
+                }
+                // onChange={(e) => setNumber(e.target.value)}
+                // required={true}
               />
             </div>
 
@@ -96,38 +148,56 @@ const Form = () => {
                 <p>+234</p>
               </div>
               <Input
-                id={"apnumber"}
-                label={"Additional Phone Number"}
-                placeholder={"Enter your Additional Phone Number"}
-                type={"phone"}
-                onChange={(e) => setAddNumber(e.target.value)}
-                required={true}
-                value={addNumber}
+                id="addNumber"
+                label="Additional Phone Number"
+                placeholder="Enter your Additional Phone Number"
+                type="phone"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.addNumber}
+                errorMessage={errors.addNumber}
+                className={
+                  errors.addNumber
+                    ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
+                    : ""
+                }
+                // onChange={(e) => setAddNumber(e.target.value)}
+                // required={true}
               />
             </div>
           </div>
 
           <div className="mb-8">
             <Input
-              id={"address"}
-              label={"Delivery Address"}
-              placeholder={"Enter your Address"}
-              type={"text"}
-              onChange={(e) => setAddress(e.target.value)}
-              required={true}
-              value={address}
+              id="address"
+              label="Delivery Address"
+              placeholder="Enter your Address"
+              type="text"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.address}
+              errorMessage={errors.address}
+              className={
+                errors.address
+                  ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
+                  : ""
+              }
+              // onChange={(e) => setAddress(e.target.value)}
+              // required={true}
             />
           </div>
 
           <div>
             <Input
-              id={"info"}
-              label={"Additional Information"}
-              placeholder={"Enter Additional Information"}
-              type={"text"}
-              onChange={(e) => setInfo(e.target.value)}
-              required={false}
-              value={info}
+              id="info"
+              label="Additional Information"
+              placeholder="Enter Additional Information"
+              type="text"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.info}
+              // onChange={(e) => setInfo(e.target.value)}
+              // required={false}
             />
           </div>
 
