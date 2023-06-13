@@ -1,13 +1,17 @@
 import { useState } from "react";
+import { useFormik } from "formik";
 import { FaCheckCircle } from "react-icons/all";
+import { useDispatch } from "react-redux";
+
 import Input from "./Input";
 import Select from "./Select";
 import CheckoutSummary from "./CheckoutSummary";
-
-import { useFormik } from "formik";
 import { validationSchema } from "./schema";
+import { setCustomer } from "../Store/Features/CustomerDetails";
 
 const Form = () => {
+  const dispatch = useDispatch();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [number, setNumber] = useState("");
@@ -28,6 +32,7 @@ const Form = () => {
 
   const onSubmit = async (values, actions) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    dispatch(setCustomer(values));
     console.log(values);
     actions.resetForm();
   };
@@ -85,8 +90,6 @@ const Form = () => {
                   ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                   : ""
               }
-              // onChange={(e) => setFirstName(e.target.value)}
-              // required={true}
             />
 
             <Input
@@ -104,8 +107,6 @@ const Form = () => {
                   ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                   : ""
               }
-              // onChange={(e) => setLastName(e.target.value)}
-              // required={true}
             />
           </div>
 
@@ -130,8 +131,6 @@ const Form = () => {
                     ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                     : ""
                 }
-                // onChange={(e) => setNumber(e.target.value)}
-                // required={true}
               />
             </div>
 
@@ -155,8 +154,6 @@ const Form = () => {
                     ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                     : ""
                 }
-                // onChange={(e) => setAddNumber(e.target.value)}
-                // required={true}
               />
             </div>
           </div>
@@ -177,8 +174,6 @@ const Form = () => {
                   ? "border border-red-600 hover:outline-1 hover:border-red-600 hover:outline-red-600"
                   : ""
               }
-              // onChange={(e) => setAddress(e.target.value)}
-              // required={true}
             />
           </div>
 
@@ -191,13 +186,11 @@ const Form = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.info}
-              // onChange={(e) => setInfo(e.target.value)}
-              // required={false}
             />
           </div>
 
           <div className="">
-            <Select state={true} />
+            <Select />
           </div>
         </div>
 

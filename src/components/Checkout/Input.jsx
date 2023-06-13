@@ -22,7 +22,7 @@ const Input = ({ id, errorMessage, label, touched, className, ...props }) => {
           {label}
         </label>
         <input className={inputClass} id={id} {...props} />
-        <p className="text-xs text-red-600 absolute mt-1">
+        <p className="text-[10px] text-red-600 absolute leading-3 mt-1">
           {touched && errorMessage}
         </p>
       </div>

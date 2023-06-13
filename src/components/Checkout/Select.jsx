@@ -31,7 +31,7 @@ const Select = () => {
           onChange={(e) => setStateValue(e.target.value)}
           className={selectClass}
         >
-          <option value="">Please Select</option>
+          <option value="" disabled>Please Select</option>
           {states?.map((state) => {
             return (
               <option key={state} value={state}>
@@ -45,7 +45,7 @@ const Select = () => {
       <div className={divClass}>
         <label className={labelClass}>City</label>
         <select onChange={(e) => setLga(e.target.value)} className={selectClass}>
-          <option value="">Please Select</option>
+          <option value="" disabled>Please Select</option>
           {statesLGA.lgas?.map((state) => {
             return (
               <option key={state} value={state}>
