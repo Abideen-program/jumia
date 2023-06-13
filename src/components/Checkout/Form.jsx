@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import { FaCheckCircle } from "react-icons/all";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Input from "./Input";
 import Select from "./Select";
@@ -11,6 +11,7 @@ import { setCustomer } from "../Store/Features/CustomerDetails";
 
 const Form = () => {
   const dispatch = useDispatch();
+  const details = useSelector((state) => state.details.customerDetails);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -32,8 +33,8 @@ const Form = () => {
 
   const onSubmit = async (values, actions) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    dispatch(setCustomer(values));
-    console.log(values);
+    dispatch(setCustomer({ ...details, ...values }));
+    console.log({ ...details, ...values });
     actions.resetForm();
   };
 
