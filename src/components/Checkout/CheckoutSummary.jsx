@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MdOutlineDiscount } from "react-icons/all";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { setCartCount, setCartTotal } from "../Store/Features/CartItemSlice";
 
 const CheckoutSummary = () => {

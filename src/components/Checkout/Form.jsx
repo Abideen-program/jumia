@@ -8,6 +8,7 @@ import Select from "./Select";
 import CheckoutSummary from "./CheckoutSummary";
 import { validationSchema } from "./schema";
 import { setCustomer } from "../Store/Features/CustomerDetails";
+import AddressFilled from "./AddressFilled";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Form = () => {
 
   const onSubmit = async (values, actions) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setValidationAttempt(true)
+    setValidationAttempt(true);
     dispatch(setCustomer({ ...details, ...values }));
     console.log({ ...details, ...values });
     actions.resetForm();
@@ -59,10 +60,10 @@ const Form = () => {
   };
 
   return (
-    <div className="px-[20px] lg:px-[55px] mt-[60px] md:mt-[84px] flex flex-col lg:flex-row gap-0 lg:gap-3">
+    <div className="px-[20px] lg:px-[50px] mt-[60px] md:mt-[84px] flex flex-col lg:flex-row gap-0 lg:gap-3">
       <form onSubmit={handleSubmit} className=" rounded-md mb-1 lg:mb-8 flex-1">
-        {validationAttempt ? (
-          <p>SECOND</p>
+        {!validationAttempt ? (
+          <AddressFilled />
         ) : (
           <div className="bg-white">
             <div className="flex items-center px-4 py-3 gap-2 border-b">
