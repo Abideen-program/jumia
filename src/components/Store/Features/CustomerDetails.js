@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchDetails } from "../../utils/fetchCustomerDetails";
 
-const customerDetails = fetchDetails()
+const customerDetails = fetchDetails();
 
 const initialState = {
   customerDetails,

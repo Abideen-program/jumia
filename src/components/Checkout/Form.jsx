@@ -62,7 +62,7 @@ const Form = () => {
   return (
     <div className="px-[20px] lg:px-[50px] mt-[60px] md:mt-[84px] flex flex-col lg:flex-row gap-0 lg:gap-3">
       <form onSubmit={handleSubmit} className=" rounded-md mb-1 lg:mb-8 flex-1">
-        {!validationAttempt ? (
+        {validationAttempt ? (
           <AddressFilled />
         ) : (
           <div className="bg-white">
