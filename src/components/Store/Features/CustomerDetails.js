@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchDetails } from "../../utils/fetchCustomerDetails";
+
+const customerDetails = fetchDetails()
 
 const initialState = {
-  customerDetails: null,
+  customerDetails,
 };
 
 const CustomerDetailsSlice = createSlice({
@@ -10,6 +13,10 @@ const CustomerDetailsSlice = createSlice({
   reducers: {
     setCustomer: (state, action) => {
       state.customerDetails = action.payload;
+      localStorage.setItem(
+        "fullDetails",
+        JSON.stringify(state.customerDetails)
+      );
     },
   },
 });

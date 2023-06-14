@@ -211,7 +211,6 @@ const Form = () => {
           </button>
         </div>
       </form>
-
       <div>
         <CheckoutSummary />
       </div>
