@@ -1,11 +1,32 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MdOutlineDiscount } from "react-icons/all";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setCartCount, setCartTotal } from "../Store/Features/CartItemSlice";
 
 const CheckoutSummary = () => {
+  const dispatch = useDispatch();
   const count = useSelector((state) => state.cartItems.cartCount);
   const total = useSelector((state) => state.cartItems.cartTotal);
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
+
+  useEffect(() => {
+    const count = cartItems.reduce((prev, curr) => {
+      return prev + curr.quantity;
+    }, 0);
+
+    dispatch(setCartCount(count));
+  }, [cartItems]);
+
+  useEffect(() => {
+    const total = cartItems.reduce((prev, curr) => {
+      return prev + curr.quantity * curr.price;
+    }, 0);
+
+    dispatch(setCartTotal(total));
+  }, [cartItems]);
+
   return (
     <div className="flex flex-col gap-2 w-full lg:w-[270px]">
       <div className=" bg-white rounded-lg flex flex-col shadow-xl">
