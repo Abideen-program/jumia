@@ -32,12 +32,17 @@ const Form = () => {
     info: "",
   };
 
+  const editHandler = () => {
+    setValidationAttempt(false);
+    // console.log('editing')
+  };
+
   const onSubmit = async (values, actions) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setValidationAttempt(true);
     dispatch(setCustomer({ ...details, ...values }));
     console.log({ ...details, ...values });
-    actions.resetForm();
+    // actions.resetForm();
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -63,7 +68,7 @@ const Form = () => {
     <div className="px-[20px] lg:px-[50px] mt-[60px] md:mt-[84px] flex flex-col lg:flex-row gap-0 lg:gap-3">
       <form onSubmit={handleSubmit} className=" rounded-md mb-1 lg:mb-8 flex-1">
         {validationAttempt ? (
-          <AddressFilled />
+          <AddressFilled edit={editHandler} />
         ) : (
           <div className="bg-white">
             <div className="flex items-center px-4 py-3 gap-2 border-b">
