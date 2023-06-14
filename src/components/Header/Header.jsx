@@ -1,4 +1,8 @@
 import { useState, useEffect } from "react";
+import { auth } from "../../firebaseConfig";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { clearCart } from "../Store/Features/CartItemSlice";
 import {
   MdSearch,
   MdKeyboardArrowDown,
@@ -6,6 +10,7 @@ import {
   AiOutlineShoppingCart,
   GiHamburgerMenu,
   BiHelpCircle,
+  MdLogout,
 } from "react-icons/all";
 import { HiOutlineUser } from "react-icons/hi";
 import { Link, Outlet } from "react-router-dom";
@@ -18,7 +23,8 @@ import Account from "./Account";
 import Help from "./Help";
 
 function Header() {
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const count = useSelector((state) => state.cartItems.cartCount);
@@ -45,6 +51,13 @@ function Header() {
     const formattedName = nameFormater(email);
     name = formattedName.toUpperCase();
   }
+
+  const signOutHandler = () => {
+    signOut(auth);
+    dispatch(clearCart());
+    localStorage.clear();
+    navigate("/");
+  };
 
   useEffect(() => {
     const count = cartItems.reduce((prev, curr) => {
@@ -144,11 +157,22 @@ function Header() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link to="signin">
-              <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
-                <HiOutlineUser className="text-2xl" />
-              </div>
-            </Link>
+            <>
+              {user ? (
+                <div
+                  onClick={signOutHandler}
+                  className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100"
+                >
+                  <MdLogout className="text-2xl" />
+                </div>
+              ) : (
+                <Link to="signin">
+                  <div className="flex items-center gap-2 hover:text-[#FF9900] transition-all duration-100">
+                    <HiOutlineUser className="text-2xl" />
+                  </div>
+                </Link>
+              )}
+            </>
             <Link to="cart">
               <div className="  flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100">
                 <div className="relative">
