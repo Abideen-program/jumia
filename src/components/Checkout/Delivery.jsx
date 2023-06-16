@@ -1,26 +1,43 @@
+import { useState } from "react";
 import { FaCheckCircle, FaTruck } from "react-icons/all";
 import { useSelector } from "react-redux";
 import ShipmentProduct from "./ShipmentProduct";
 
 const Delivery = () => {
+  const [confirm, setConfirm] = useState(false);
+  const [delivery, setDelivery] = useState("");
+
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const date = new Date();
   const newDate = date.getDate() + 3;
+
+  const confirmationHandle = () => {
+    setConfirm(true);
+    console.log(delivery);
+  };
+
   return (
     <div>
       <div className="bg-white mt-4 pb-4">
         <div className="flex items-center px-4 py-3 gap-2 border-b">
-          <FaCheckCircle className="text-[#7A7A7F]" />
+          <FaCheckCircle
+            className={`${confirm ? "text-[green]" : "text-[#7A7A7F]"}`}
+          />
           <p className="text-[13px] md:text-sm font-medium">2. DELIVERY</p>
         </div>
 
         {/* DELIVERY TYPE SECTION */}
 
-        <div className="px-4 py-3 border border-red-500">
+        <div className="px-4 py-3">
           {/* <form> */}
           <div className="flex flex-col pb-3 border-b">
             <div className="flex items-start gap-2">
-              <input type="radio" name="delivery" value="Pick-up Station" />
+              <input
+                type="radio"
+                name="delivery"
+                value="Pick-up Station"
+                onChange={(e) => setDelivery(e.target.value)}
+              />
               <div className="-mt-1">
                 <p className="text-sm font-medium">Pick-up Station</p>
                 <p className="text-[10px] font-light mt-1 mb-2">
@@ -46,7 +63,12 @@ const Delivery = () => {
 
           <div className="flex justify-between items-center">
             <div className="mt-4 flex items-start gap-2">
-              <input type="radio" name="delivery" value="Door Delivery" />
+              <input
+                type="radio"
+                name="delivery"
+                value="Door Delivery"
+                onChange={(e) => setDelivery(e.target.value)}
+              />
               <div className="-mt-1">
                 <p className="text-sm font-medium">Door Delivery</p>
                 <p className="text-[10px] font-light my-1">
@@ -67,7 +89,7 @@ const Delivery = () => {
 
           <div className="border rounded-sm my-2">
             <div className="px-4 py-2 border-b">
-              <p className="text-sm font-medium">Pick-up Station</p>
+              <p className="text-sm font-medium">{delivery}</p>
               <p className="text-[10px] font-light my-1">
                 Delivery Scheduled on{" "}
                 <span className="font-semibold">{newDate} June</span>
@@ -85,6 +107,7 @@ const Delivery = () => {
           <button
             type="sumit"
             className="ml-auto bg-[#ff9900] text-xs md:text-sm text-white font-semibold p-3 md:p-4 rounded-md hover:bg-[#E07E1B]"
+            onClick={confirmationHandle}
           >
             CONFIRM DELIVERY DETAILS
           </button>

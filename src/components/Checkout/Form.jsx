@@ -70,7 +70,7 @@ const Form = () => {
     <div className="px-[20px] lg:px-[50px] mt-[60px] md:mt-[84px] flex flex-col lg:flex-row gap-0 lg:gap-3">
       <form onSubmit={handleSubmit} className=" rounded-md mb-1 lg:mb-8 flex-1">
         {/* IF VALIDATION ATTEMPT IS TRUE DON'T SHOW THE FIRST FORM FORM AGAIN, INSTEAD SHOW THE FORM FILLED COMPONENT */}
-        {!validationAttempt ? (
+        {validationAttempt ? (
           <AddressFilled edit={editHandler} />
         ) : (
           <div className="bg-white">
@@ -221,7 +221,20 @@ const Form = () => {
             </div>
           </div>
         )}
-        <Delivery />
+        <>
+          {validationAttempt ? (
+            <Delivery />
+          ) : (
+            <div className="bg-white mt-4">
+              <div className="flex items-center px-4 py-3 gap-2 border-b">
+                <FaCheckCircle className="text-[#7A7A7F]" />
+                <p className="text-[13px] md:text-sm font-medium">
+                  2. DELIVERY
+                </p>
+              </div>
+            </div>
+          )}
+        </>
 
         <Payment />
       </form>
