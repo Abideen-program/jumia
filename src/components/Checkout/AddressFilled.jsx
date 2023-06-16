@@ -11,8 +11,8 @@ const AddressFilled = ({ edit }) => {
     // console.log(edit)
   };
 
-  const allDetails = [details];
-  console.log([...allDetails]);
+  // const allDetails = [details];
+  // console.log([...allDetails]);
   return (
     <div>
       {change ? (
