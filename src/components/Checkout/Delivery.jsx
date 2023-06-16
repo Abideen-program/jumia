@@ -1,9 +1,11 @@
 import { FaCheckCircle, FaTruck } from "react-icons/all";
 import { useSelector } from "react-redux";
+import ShipmentProduct from "./ShipmentProduct";
 
 const Delivery = () => {
   const cartItems = useSelector((state) => state.cartItems.cartItems);
-  console.log(cartItems);
+  const date = new Date();
+  const newDate = date.getDate() + 3;
   return (
     <div>
       <div className="bg-white mt-4 pb-4">
@@ -23,7 +25,7 @@ const Delivery = () => {
                 <p className="text-sm font-medium">Pick-up Station</p>
                 <p className="text-[10px] font-light mt-1 mb-2">
                   Delivery Scheduled on{" "}
-                  <span className="font-semibold">19 June</span>
+                  <span className="font-semibold">{newDate} June</span>
                 </p>
               </div>
             </div>
@@ -49,7 +51,7 @@ const Delivery = () => {
                 <p className="text-sm font-medium">Door Delivery</p>
                 <p className="text-[10px] font-light my-1">
                   Delivery Scheduled on{" "}
-                  <span className="font-semibold">19 June</span>
+                  <span className="font-semibold">{newDate} June</span>
                 </p>
               </div>
             </div>
@@ -61,35 +63,31 @@ const Delivery = () => {
         {/* SHIPMENT SECTION */}
 
         <div className="px-4 my-3">
-          <p className="text-xs font-medium">Shipment</p>
+          <p className="text-xs font-medium">Shipments {cartItems.length}</p>
 
           <div className="border rounded-sm my-2">
             <div className="px-4 py-2 border-b">
               <p className="text-sm font-medium">Pick-up Station</p>
               <p className="text-[10px] font-light my-1">
                 Delivery Scheduled on{" "}
-                <span className="font-semibold">19 June</span>
+                <span className="font-semibold">{newDate} June</span>
               </p>
             </div>
 
             <div>
               {cartItems?.map((item) => {
-                return (
-                  <div key={item.id} className="px-2 mt-2 border flex items-center">
-                    <img
-                      src={item.imageURL}
-                      alt="product"
-                      className="h-16 w-16"
-                    />
-                    <div className="flex flex-col">
-                      <p className="text-xs">{item.title}</p>
-                      <p className="text-xs">QTY: {item.quantity}</p>
-                    </div>
-                  </div>
-                );
+                return <ShipmentProduct key={item.id} item={item} />;
               })}
             </div>
           </div>
+        </div>
+        <div className="px-4 flex">
+          <button
+            type="sumit"
+            className="ml-auto bg-[#ff9900] text-xs md:text-sm text-white font-semibold p-3 md:p-4 rounded-md hover:bg-[#E07E1B]"
+          >
+            CONFIRM DELIVERY DETAILS
+          </button>
         </div>
       </div>
     </div>
