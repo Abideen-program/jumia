@@ -80,7 +80,7 @@ const AddressFilled = ({ edit }) => {
             <p className="text-sm">
               {details.firstName} {details.lastName}
             </p>
-            <p className="text-[10px] mt-2">
+            <p className="text-[10px] mt-2 text-[#7A7A7F]">
               {details.address} | {details.state} - {details.LGA} |{" "}
               {details.number}
             </p>
