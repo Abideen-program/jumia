@@ -1,4 +1,4 @@
-import { FaCheckCircle } from "react-icons/all";
+import { FaCheckCircle, MdAccountBalanceWallet } from "react-icons/all";
 
 const Payment = () => {
   return (
@@ -28,11 +28,15 @@ const Payment = () => {
         <div className="px-4 my-3">
           <div className="border rounded-md">
             <div className="border-b p-2">
-              <p className="text-sm bg-[#F1F1F2] p-1 rounded-sm w-1/2 text-[#264996] font-semibold">
-                Jumia Pay Balance ₦0.00
+              <p className="text-sm bg-[#F1F1F2] p-2 rounded-sm w-1/2 text-[#264996] font-semibold flex items-center gap-2">
+                Jumia Pay Balance{" "}
+                <span>
+                  <MdAccountBalanceWallet className="text-2xl" />
+                </span>{" "}
+                ₦0.00
               </p>
             </div>
-            <div className="p-2 flex flex-col gap-3">
+            <div className="p-2 flex flex-col gap-3 mb-4">
               <p className="text-[10px]">
                 - Ensure your payment information is up to date and that you
                 have the necessary funds.
@@ -43,7 +47,28 @@ const Payment = () => {
                 displayed.
               </p>
             </div>
+
+            <div className="p-2 border-t flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <p className="text-xs text-[#7A7A7F]">Powered By</p>
+                <img src="/images/pay.png" alt="pay" className="w-20" />
+              </div>
+
+              <div className="flex items-center gap-2">
+                <p className="text-xs text-[#7A7A7F] font-medium">We accept:</p>
+                <img src="/images/gateway.png" alt="pay" className="w-20" />
+              </div>
+            </div>
           </div>
+        </div>
+        <div className="px-4 flex">
+          <button
+            type="sumit"
+            className="ml-auto bg-[#ff9900] text-xs md:text-sm text-white font-semibold p-3 md:p-4 rounded-md hover:bg-[#E07E1B]"
+            // onClick={confirmationHandle}
+          >
+            CONFIRM PAYMENT METHOD
+          </button>
         </div>
       </div>
     </div>
