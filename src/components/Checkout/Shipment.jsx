@@ -14,7 +14,7 @@ const Shipment = ({ onDelivery }) => {
 
       <div className="border rounded-sm my-2">
         <div className="px-4 py-2 border-b">
-          <p className="text-sm font-medium">{delivery}</p>
+          <p className="text-xs md:text-sm font-medium">{delivery}</p>
           <p className="text-[10px] font-light my-1">
             Delivery Scheduled on{" "}
             <span className="font-semibold">{newDate} June</span>

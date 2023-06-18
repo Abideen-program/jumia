@@ -41,7 +41,7 @@ const Delivery = () => {
                       onChange={(e) => setDelivery(e.target.value)}
                     />
                     <div className="-mt-1">
-                      <p className="text-sm font-medium">Pick-up Station</p>
+                      <p className="text-xs md:text-sm font-medium">Pick-up Station</p>
                       <p className="text-[10px] font-light mt-1 mb-2">
                         Delivery Scheduled on{" "}
                         <span className="font-semibold">{newDate} June</span>
@@ -51,7 +51,7 @@ const Delivery = () => {
 
                   <div
                     onClick={() => setDelivery("")}
-                    className="text-xs hover:underline cursor-pointer text-[#294B97] flex gap-1 items-center"
+                    className="-mt-1 text-[10px] md:text-xs hover:underline cursor-pointer text-[#294B97] flex gap-1 items-center"
                   >
                     <p>Change</p>
                     <FaAngleRight />
@@ -87,7 +87,7 @@ const Delivery = () => {
                       onChange={(e) => setDelivery(e.target.value)}
                     />
                     <div className="-mt-1">
-                      <p className="text-sm font-medium">Door Delivery</p>
+                      <p className="text-xs md:text-sm font-medium">Door Delivery</p>
                       <p className="text-[10px] font-light my-1">
                         Delivery Scheduled on{" "}
                         <span className="font-semibold">{newDate} June</span>
@@ -96,7 +96,7 @@ const Delivery = () => {
                   </div>
                   <div
                     onClick={() => setDelivery("")}
-                    className="text-xs hover:underline cursor-pointer text-[#294B97] flex gap-1 items-center"
+                    className="-mt-1 text-[10px] md:text-xs hover:underline cursor-pointer text-[#294B97] flex gap-1 items-center"
                   >
                     <p>Change</p>
                     <FaAngleRight />
