@@ -46,6 +46,10 @@ const Payment = () => {
                 - For bank transfer, kindly ensure you transfer the exact amount
                 displayed.
               </p>
+
+              <p className="text-[10px] text-[#264996] cursor-pointer">
+                Details...
+              </p>
             </div>
 
             <div className="p-2 border-t flex items-center justify-between">
