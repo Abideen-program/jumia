@@ -56,7 +56,7 @@ const CheckoutSummary = () => {
           <Link to={"/"}>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="bg-[#A3A3A6] rounded-md text-sm font-medium text-white  hover:bg-[#E07E1B] shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full"
+              className="bg-[#A3A3A6] rounded-md text-sm font-medium text-white shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full"
             >
               CONFIRM ORDER
             </motion.button>
