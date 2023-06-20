@@ -23,7 +23,20 @@ const Form = () => {
   const [address, setAddress] = useState("");
   const [info, setInfo] = useState("");
 
+  //THIS HANDLES THE VALIDATION OF CUSTOMER DETAILS FORM
   const [validationAttempt, setValidationAttempt] = useState(false);
+  //THIS HANDLES THE VALIDATION OF DELIVERY SECTION FORM
+  const [deliveryAttempt, setDeliveryAttempt] = useState(false);
+  //THIS HANDLES THE VALIDATION OF PAYMENT METHOD SECTION FORM
+  const [paymentMethod, setPaymentMethod] = useState(false);
+
+  const deliveryAttemptHandler = () => {
+    setDeliveryAttempt(true);
+  };
+
+  const paymentMethodHandler = () => {
+    setPaymentMethod(true);
+  };
 
   const formValues = {
     firstName: "",
@@ -223,7 +236,7 @@ const Form = () => {
         )}
         <>
           {validationAttempt ? (
-            <Delivery />
+            <Delivery onDeliveryAttempt={deliveryAttemptHandler} />
           ) : (
             <div className="bg-white mt-4">
               <div className="flex items-center px-4 py-3 gap-2 border-b">
@@ -236,7 +249,7 @@ const Form = () => {
           )}
         </>
 
-        <Payment />
+        <Payment deliveryAttempt={deliveryAttempt} />
       </form>
       <div>
         <CheckoutSummary />

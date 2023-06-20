@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ShipmentProduct from "./ShipmentProduct";
 import Shipment from "./Shipment";
 
-const Delivery = () => {
+const Delivery = ({ onDeliveryAttempt }) => {
   const [confirm, setConfirm] = useState(false);
   const [delivery, setDelivery] = useState("");
 
@@ -13,6 +13,7 @@ const Delivery = () => {
 
   const confirmationHandle = () => {
     setConfirm(true);
+    onDeliveryAttempt();
   };
 
   return (
@@ -41,7 +42,9 @@ const Delivery = () => {
                       onChange={(e) => setDelivery(e.target.value)}
                     />
                     <div className="-mt-1">
-                      <p className="text-xs md:text-sm font-medium">Pick-up Station</p>
+                      <p className="text-xs md:text-sm font-medium">
+                        Pick-up Station
+                      </p>
                       <p className="text-[10px] font-light mt-1 mb-2">
                         Delivery Scheduled on{" "}
                         <span className="font-semibold">{newDate} June</span>
@@ -87,7 +90,9 @@ const Delivery = () => {
                       onChange={(e) => setDelivery(e.target.value)}
                     />
                     <div className="-mt-1">
-                      <p className="text-xs md:text-sm font-medium">Door Delivery</p>
+                      <p className="text-xs md:text-sm font-medium">
+                        Door Delivery
+                      </p>
                       <p className="text-[10px] font-light my-1">
                         Delivery Scheduled on{" "}
                         <span className="font-semibold">{newDate} June</span>
