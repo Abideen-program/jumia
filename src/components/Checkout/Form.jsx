@@ -249,10 +249,13 @@ const Form = () => {
           )}
         </>
 
-        <Payment deliveryAttempt={deliveryAttempt} />
+        <Payment
+          onPayment={paymentMethodHandler}
+          deliveryAttempt={deliveryAttempt}
+        />
       </form>
       <div>
-        <CheckoutSummary />
+        <CheckoutSummary paymentValid={paymentMethod} />
       </div>
     </div>
   );

@@ -1,11 +1,22 @@
+import { useState } from "react";
 import { FaCheckCircle, MdAccountBalanceWallet } from "react-icons/all";
 
-const Payment = ({ deliveryAttempt }) => {
+const Payment = ({ deliveryAttempt, onPayment }) => {
+  const [confirm, setConfirm] = useState(false);
+
+  const paymentHandler = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setConfirm(true);
+    onPayment();
+  };
+
   return (
     <div>
       <div className={`bg-white mt-4 ${deliveryAttempt ? "pb-3" : ""}`}>
         <div className="flex items-center px-4 py-3 gap-2 border-b">
-          <FaCheckCircle className="text-[#7A7A7F]" />
+          <FaCheckCircle
+            className={`${confirm ? "text-[green]" : "text-[#7A7A7F]"}`}
+          />
           <p className="text-[13px] md:text-sm font-medium">
             3. PAYMENT METHOD
           </p>
@@ -78,7 +89,7 @@ const Payment = ({ deliveryAttempt }) => {
                 <button
                   type="sumit"
                   className="ml-auto bg-[#ff9900] text-xs md:text-sm text-white font-semibold p-3 md:p-4 rounded-md hover:bg-[#E07E1B]"
-                  // onClick={confirmationHandle}
+                  onClick={paymentHandler}
                 >
                   CONFIRM PAYMENT METHOD
                 </button>

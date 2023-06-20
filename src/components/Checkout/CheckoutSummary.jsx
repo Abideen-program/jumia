@@ -5,7 +5,7 @@ import { MdOutlineDiscount } from "react-icons/all";
 import { useDispatch, useSelector } from "react-redux";
 import { setCartCount, setCartTotal } from "../Store/Features/CartItemSlice";
 
-const CheckoutSummary = () => {
+const CheckoutSummary = ({ paymentValid }) => {
   const dispatch = useDispatch();
   const count = useSelector((state) => state.cartItems.cartCount);
   const total = useSelector((state) => state.cartItems.cartTotal);
@@ -56,7 +56,9 @@ const CheckoutSummary = () => {
           <Link to={"/"}>
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="bg-[#A3A3A6] rounded-md text-sm font-medium text-white shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full"
+              className={`rounded-md text-sm font-medium text-white shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full ${
+                paymentValid ? "bg-[#ff9900]" : "bg-[#A3A3A6]"
+              }`}
             >
               CONFIRM ORDER
             </motion.button>

@@ -11,7 +11,8 @@ const Delivery = ({ onDeliveryAttempt }) => {
   const date = new Date();
   const newDate = date.getDate() + 3;
 
-  const confirmationHandle = () => {
+  const confirmationHandle = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setConfirm(true);
     onDeliveryAttempt();
   };
