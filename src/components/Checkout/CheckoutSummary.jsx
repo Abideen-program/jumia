@@ -53,11 +53,11 @@ const CheckoutSummary = ({ paymentValid }) => {
         </div>
 
         <div className="px-2 py-3 inline-block">
-          <Link to={"/"}>
+          <Link to={`${paymentValid ? '/' : ''}`}>
             <motion.button
               whileTap={{ scale: 0.9 }}
               className={`rounded-md text-sm font-medium text-white shadow-md flex items-center justify-center p-3 w-full md:w-auto lg:w-full ${
-                paymentValid ? "bg-[#ff9900]" : "bg-[#A3A3A6]"
+                paymentValid ? "bg-[#ff9900]" : "bg-[#A3A3A6] cursor-not-allowed"
               }`}
             >
               CONFIRM ORDER

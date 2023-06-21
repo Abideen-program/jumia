@@ -21,7 +21,7 @@ const Shipment = ({ onDelivery }) => {
           </p>
         </div>
 
-        <div>
+        <div className="pb-3">
           {cartItems?.map((item) => {
             return <ShipmentProduct key={item.id} item={item} />;
           })}

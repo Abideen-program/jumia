@@ -1,7 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaAngleRight, FaCheckCircle, FaTruck } from "react-icons/all";
-import { useSelector } from "react-redux";
-import ShipmentProduct from "./ShipmentProduct";
 import Shipment from "./Shipment";
 
 const Delivery = ({ onDeliveryAttempt }) => {
@@ -117,13 +116,23 @@ const Delivery = ({ onDeliveryAttempt }) => {
         <Shipment onDelivery={delivery} />
 
         <div className="px-4 flex">
-          <button
-            type="sumit"
-            className="ml-auto bg-[#ff9900] text-xs md:text-sm text-white font-semibold p-3 md:p-4 rounded-md hover:bg-[#E07E1B]"
-            onClick={confirmationHandle}
-          >
-            CONFIRM DELIVERY DETAILS
-          </button>
+          {confirm ? (
+            <Link to="/cart" className="justify-center">
+              <div className="text-center">
+                <span className="uppercase text-center font-semibold text-sm text-[#ff9900] p-2 hover:bg-[#FAC58E] rounded-sm w-auto">
+                  modify cart
+                </span>
+              </div>
+            </Link>
+          ) : (
+            <button
+              type="sumit"
+              className="ml-auto bg-[#ff9900] text-xs md:text-sm text-white font-semibold p-3 md:p-4 rounded-md hover:bg-[#E07E1B]"
+              onClick={confirmationHandle}
+            >
+              CONFIRM DELIVERY DETAILS
+            </button>
+          )}
         </div>
       </div>
     </div>
