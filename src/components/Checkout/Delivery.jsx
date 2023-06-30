@@ -115,7 +115,7 @@ const Delivery = ({ onDeliveryAttempt }) => {
         {/* SHIPMENT SECTION */}
         <Shipment onDelivery={delivery} />
 
-        <div className="px-4 flex">
+        <div className="px-4 flex items-center justify-center">
           {confirm ? (
             <Link to="/cart" className="justify-center">
               <div className="text-center">
