@@ -21,6 +21,7 @@ import { setCartCount } from "../Store/Features/CartItemSlice";
 import Banner from "./Banner";
 import Account from "./Account";
 import Help from "./Help";
+import Menu from "../FirstSection/Menu";
 
 function Header() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ function Header() {
 
   const [acc, setAcc] = useState(false);
   const [help, setHelp] = useState(false);
+  const [showSideitem, setShowSideitem] = useState(false);
 
   const showAcc = () => {
     setAcc(!acc);
@@ -68,7 +70,12 @@ function Header() {
   }, [cartItems]);
 
   return (
-    <>
+    <div className="relative">
+      {showSideitem && (
+        <div className="block lg:hidden absolute left-0 top-16 md:top-[85px] z-30">
+          <Menu mobile={true} />
+        </div>
+      )}
       <Banner />
       {/* DESKETOP NAVBAR */}
       <div className="bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center relative right-0 left-0 z-20">
@@ -144,7 +151,7 @@ function Header() {
       <div className="bg-white px-[20px] py-5 lg:hidden items-center">
         <div className="flex items-center justify-between mb-2">
           <div className="flex gap-2 items-center">
-            <GiHamburgerMenu className="text-2xl" />
+            <GiHamburgerMenu className="text-2xl cursor-pointer" onClick={() => setShowSideitem(!showSideitem)}/>
             <Link to="/">
               <div className="h-[20px]">
                 <img
@@ -203,7 +210,7 @@ function Header() {
       </div>
 
       <Outlet />
-    </>
+    </div>
   );
 }
 
