@@ -13,8 +13,7 @@ const SecondSection = () => {
   if (width <= 1024) count = 6;
   if (width <= 768) count = 5;
   if (width <= 425) count = 3;
-  // if (width === 375) count = 3;
-  // if (width === 320) count = 2;
+  if (width === 320) count = 2;
 
   const fetchData = () => {
     return axios.get(
