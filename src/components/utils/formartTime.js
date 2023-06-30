@@ -1,3 +1,18 @@
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const formartTime = () => {
   const currentTime = Date.parse(new Date());
   let getMonth = new Date().getMonth() + 1;
@@ -17,6 +32,12 @@ const formartTime = () => {
   if (hours < 10) hours = "0" + hours;
 
   return { hours, minutes, seconds };
+};
+
+export const formatMonth = () => {
+  const date = new Date();
+  const month = months[date.getMonth()];
+  return month;
 };
 
 export default formartTime;

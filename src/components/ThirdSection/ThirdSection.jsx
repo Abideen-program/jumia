@@ -15,7 +15,6 @@ const ThirdSection = ({ isLoading }) => {
   if (width <= 1024) count = 5;
   if (width <= 768) count = 4;
   if (width <= 425) count = 2;
-  // if (width === 375) count = 2;
   if (width === 320) count = 1;
 
   return (

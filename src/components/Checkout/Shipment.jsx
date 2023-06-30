@@ -1,11 +1,18 @@
 import { useSelector } from "react-redux";
 import ShipmentProduct from "./ShipmentProduct";
+import { formatMonth } from "../utils/formartTime";
 
 const Shipment = ({ onDelivery }) => {
   const delivery = onDelivery;
 
   const date = new Date();
-  const newDate = date.getDate() + 3;
+  let newDate = date.getDate() + 3;
+
+  if (newDate > 29) {
+    newDate = date.getDate();
+  }
+
+  const month = formatMonth();
 
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   return (
@@ -17,7 +24,7 @@ const Shipment = ({ onDelivery }) => {
           <p className="text-xs md:text-sm font-medium">{delivery}</p>
           <p className="text-[10px] font-light my-1">
             Delivery Scheduled on{" "}
-            <span className="font-semibold">{newDate} June</span>
+            <span className="font-semibold">{newDate} {month}</span>
           </p>
         </div>
 

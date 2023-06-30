@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaAngleRight, FaCheckCircle, FaTruck } from "react-icons/all";
+import { formatMonth } from "../utils/formartTime";
 import Shipment from "./Shipment";
 
 const Delivery = ({ onDeliveryAttempt }) => {
@@ -8,7 +9,13 @@ const Delivery = ({ onDeliveryAttempt }) => {
   const [delivery, setDelivery] = useState("");
 
   const date = new Date();
-  const newDate = date.getDate() + 3;
+  let newDate = date.getDate() + 3;
+
+  if (newDate > 29) {
+    newDate = date.getDate();
+  }
+
+  const month = formatMonth();
 
   const confirmationHandle = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -47,7 +54,9 @@ const Delivery = ({ onDeliveryAttempt }) => {
                       </p>
                       <p className="text-[10px] font-light mt-1 mb-2">
                         Delivery Scheduled on{" "}
-                        <span className="font-semibold">{newDate} June</span>
+                        <span className="font-semibold">
+                          {newDate} {month}
+                        </span>
                       </p>
                     </div>
                   </div>
