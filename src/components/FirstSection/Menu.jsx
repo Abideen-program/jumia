@@ -15,17 +15,29 @@ import {
 } from "react-icons/all";
 
 import MenuItem from "./MenuItem";
+import { FaTimes } from "react-icons/fa";
 
-const Menu = ({ mobile }) => {
+const Menu = ({ mobile, hideSide }) => {
   return (
     <>
       <div
-        className={`bg-white w-[206px] h-max rounded-md p-2 ${
+        className={`bg-white w-[206px]  rounded-md p-2 ${
           mobile ? "" : "hidden"
         } lg:flex flex-col ${
-          mobile ? "flex flex-col gap-3" : "gap-[4px]"
+          mobile
+            ? "flex flex-col gap-3 h-[calc(100vh_-_30px)] md:h-[calc(100vh_-_70px)] justify-evenly"
+            : "h-max gap-[4px]"
         } xl:gap-3`}
       >
+        <FaTimes
+          onClick={() => hideSide()}
+          className={`text-2xl ${
+            mobile
+              ? "flex cursor-pointer absolute top-0 right-0 mx-3 my-4"
+              : "hidden"
+          }`}
+        />
+
         <MenuItem text="Supermarket" icon={<CiApple />} />
         <MenuItem text="Health & Beauty" icon={<HiOutlinePaintBrush />} />
         <MenuItem text="Home & Office" icon={<HiOutlineHome />} />
