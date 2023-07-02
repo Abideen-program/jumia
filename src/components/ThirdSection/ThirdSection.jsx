@@ -20,7 +20,7 @@ const ThirdSection = ({ isLoading }) => {
   return (
     <>
       {isLoading ? (
-        <h3 className="my-4 text-center bg-green-300 text-white font-medium">
+        <h3 className="my-4 text-center bg-[#ff9900] text-white font-medium">
           Loading products!!!
         </h3>
       ) : (

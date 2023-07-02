@@ -44,7 +44,7 @@ const SecondSection = () => {
 
   if (isLoading) {
     return (
-      <h4 className="my-4 text-center bg-green-300 text-white font-medium">
+      <h4 className="my-4 text-center bg-[#ff9900] text-white font-medium">
         Loading products!!!
       </h4>
     );
