@@ -17,17 +17,15 @@ import {
 import MenuItem from "./MenuItem";
 import { FaTimes } from "react-icons/fa";
 
-const Menu = ({ mobile, hideSide }) => {
+const Menu = ({ mobile, hideSide, showSideitem }) => {
   return (
     <>
       <div
-        className={`bg-white w-[206px]  rounded-md p-2 ${
-          mobile ? "" : "hidden"
-        } lg:flex flex-col ${
+        className={`bg-white w-[206px] rounded-md p-2 xl:gap-3 transition-all duration-500 ease-in ${
           mobile
-            ? "flex flex-col gap-3 h-[calc(100vh_-_30px)] md:h-[calc(100vh_-_70px)] justify-evenly"
-            : "h-max gap-[4px]"
-        } xl:gap-3`}
+            ? "fixed top-0 h-screen overflow-y-scroll scrollbar-none flex flex-col gap-3 justify-evenly rounded-none"
+            : "hidden h-max gap-[4px]"
+        } ${showSideitem ? "left-[0%]" : "left-[-100%]"} lg:flex flex-col`}
       >
         <FaTimes
           onClick={() => hideSide()}

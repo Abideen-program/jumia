@@ -14,7 +14,7 @@ import { nameFormater } from "../utils/nameFormatter";
 import { clearCart } from "../Store/Features/CartItemSlice";
 
 const wrapperClass = clx(
-  "absolute top-[70px] right-44 bg-white w-[220px] rounded-md border border-stone-200 z-10"
+  "absolute top-[70px] right-56 bg-white w-[220px] rounded-md border border-stone-200 z-10"
 );
 const buttonClass = clx(
   "w-full bg-[#FF9900] rounded-md text-white px-3 py-2 hover:bg-[#E07E1B] shadow-md"

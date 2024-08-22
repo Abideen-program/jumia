@@ -33,6 +33,7 @@ function Header() {
   const [acc, setAcc] = useState(false);
   const [help, setHelp] = useState(false);
   const [showSideitem, setShowSideitem] = useState(false);
+  const [fixedBackground, setFixedBackground] = useState(false);
 
   const showAcc = () => {
     setAcc(!acc);
@@ -73,16 +74,46 @@ function Header() {
     dispatch(setCartCount(count));
   }, [cartItems]);
 
+  const TOP_OFFSET = 56;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= TOP_OFFSET) {
+        setFixedBackground(true);
+      } else {
+        setFixedBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scroll = window.scrollY;
+
+  // console.log({scroll, fixedBackground})
+
   return (
     <div className="relative">
-      {showSideitem && (
-        <div className="block lg:hidden absolute left-0 top-5 md:top-[34px] z-30">
-          <Menu mobile={true} hideSide={hideSideItem} />
-        </div>
-      )}
+      
+      <div className="block lg:hidden absolute left-0 top-5 md:top-[34px] z-30">
+        <Menu
+          mobile={true}
+          hideSide={hideSideItem}
+          showSideitem={showSideitem}
+        />
+      </div>
+      
       <Banner />
       {/* DESKETOP NAVBAR */}
-      <div className="bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center relative right-0 left-0 z-20">
+      <div
+        className={`bg-white hidden px-[50px] gap-16 py-5 lg:flex items-center ${
+          fixedBackground ? "fixed top-0" : "relative"
+        } right-0 left-0 z-20`}
+      >
         <Link to={"/"}>
           <div className="h-[50px]">
             <img className="h-full" src="/images/jumia-logo.png" alt="jumia" />
@@ -106,10 +137,12 @@ function Header() {
           <div className="flex items-center gap-3">
             <div
               onClick={showAcc}
-              className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100"
+              className={`${
+                acc ? "bg-[#D3D3D5]" : ""
+              } rounded-md flex items-center gap-2 hover:text-[#FF9900] p-3 cursor-pointer transition-all duration-100`}
             >
               {user ? (
-                <div className="hover:bg-[#D3D3D5] flex items-center justify-center gap-2 p-3 rounded-md w-max">
+                <div className="flex items-center justify-center gap-2 w-max">
                   <FiUserCheck className="text-2xl" />
                   <p className="text-base font-medium">Hi, {name}</p>
                   <MdKeyboardArrowDown />
@@ -125,7 +158,9 @@ function Header() {
 
             <div
               onClick={showHelp}
-              className="flex items-center gap-2 hover:text-[#FF9900] cursor-pointer transition-all duration-100"
+              className={`${
+                help ? "bg-[#D3D3D5]" : ""
+              } rounded-md flex items-center gap-2 hover:text-[#FF9900] p-3 cursor-pointer transition-all duration-100`}
             >
               <BiHelpCircle className="text-2xl" />
               <p>Help</p>
@@ -150,9 +185,12 @@ function Header() {
         {acc && <Account />}
         {help && <Help />}
       </div>
-
       {/* MOBILE VIEW */}
-      <div className="bg-white px-[20px] py-5 lg:hidden items-center">
+      <div
+        className={`bg-white px-[20px] py-5 lg:hidden items-center z-20 right-0 left-0 ${
+          fixedBackground ? "fixed top-0" : "relative"
+        }`}
+      >
         <div className="flex items-center justify-between mb-2">
           <div className="flex gap-2 items-center">
             <GiHamburgerMenu
@@ -215,7 +253,6 @@ function Header() {
           </div>
         </div>
       </div>
-
       <Outlet />
     </div>
   );
