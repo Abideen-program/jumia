@@ -3,6 +3,7 @@ import Wrapper from "../CarouselWrapper/Wrapper";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Loader from "../CarouselWrapper/Loader";
 
 const FifthSection = ({ isLoading }) => {
   const products = useSelector((state) => state.products.products);
@@ -18,11 +19,18 @@ const FifthSection = ({ isLoading }) => {
 
   return (
     <>
-      {isLoading ? (
-        <h3 className="my-4 text-center bg-[#ff9900] text-white font-medium">
-          Loading products!!!
-        </h3>
-      ) : (
+      {isLoading && (
+        <div className="mx-2 lg:mx-0 my-4">
+          <Wrapper count={count}>
+            {Array(10)
+              .fill(0)
+              .map((_, idx) => {
+                return <Loader key={idx} />;
+              })}
+          </Wrapper>
+        </div>
+      )}
+      {!isLoading && (
         <>
           <h3 className="bg-[#FEE2CC] rounded-t-md font-medium text-xs md:text-lg py-2 px-4 flex items-center justify-between">
             <span>Limited Stock Deal</span>
