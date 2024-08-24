@@ -4,6 +4,7 @@ import SlideItem from "../CarouselWrapper/SlideItem";
 import Wrapper from "../CarouselWrapper/Wrapper";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Loader from "../CarouselWrapper/Loader";
 
 const ThirdSection = ({ isLoading }) => {
   const products = useSelector((state) => state.products.products);
@@ -19,32 +20,41 @@ const ThirdSection = ({ isLoading }) => {
 
   return (
     <>
-      {isLoading ? (
-        <h3 className="my-4 text-center bg-[#ff9900] text-white font-medium">
-          Loading products!!!
-        </h3>
-      ) : (
-        <h3 className="bg-white text-lg font-medium py-2 px-4">
-          Top Selling Items
-        </h3>
+      {isLoading && (
+        <div className="mx-2 lg:mx-0 my-4">
+          <Wrapper count={count}>
+            {Array(10)
+              .fill(0)
+              .map((_, idx) => {
+                return <Loader key={idx} />;
+              })}
+          </Wrapper>
+        </div>
       )}
-      <Wrapper count={count}>
-        {products
-          ?.filter((product, index) => index <= 14)
-          .map((product) => {
-            return (
-              <Link key={product.id} to={`/${product.id}`}>
-                <SlideItem
-                  key={product.id}
-                  title={product.title}
-                  image={product.image}
-                  price={product.price}
-                  percent={product.percent}
-                />
-              </Link>
-            );
-          })}
-      </Wrapper>
+      {!isLoading && (
+        <div>
+          <h3 className="bg-white text-lg font-medium py-2 px-4">
+            Top Selling Items
+          </h3>
+          <Wrapper count={count}>
+            {products
+              ?.filter((product, index) => index <= 14)
+              .map((product) => {
+                return (
+                  <Link key={product.id} to={`/${product.id}`}>
+                    <SlideItem
+                      key={product.id}
+                      title={product.title}
+                      image={product.image}
+                      price={product.price}
+                      percent={product.percent}
+                    />
+                  </Link>
+                );
+              })}
+          </Wrapper>
+        </div>
+      )}
     </>
   );
 };

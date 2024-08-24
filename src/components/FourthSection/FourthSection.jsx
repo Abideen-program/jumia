@@ -5,6 +5,7 @@ import formartTime from "../utils/formartTime";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Loader from "../CarouselWrapper/Loader";
 
 const FourthSection = ({ isLoading }) => {
   const products = useSelector((state) => state.products.products);
@@ -32,11 +33,18 @@ const FourthSection = ({ isLoading }) => {
 
   return (
     <>
-      {isLoading ? (
-        <h3 className="my-4 text-center bg-[#ff9900] text-white font-medium">
-          Loading products!!!
-        </h3>
-      ) : (
+      {isLoading && (
+        <div className="mx-2 lg:mx-0 my-4">
+          <Wrapper count={count}>
+            {Array(10)
+              .fill(0)
+              .map((_, idx) => {
+                return <Loader key={idx} />;
+              })}
+          </Wrapper>
+        </div>
+      )}
+      {!isLoading && (
         <>
           <h3 className="bg-[#E61601] rounded-t-md text-white text-xs md:text-lg py px-4 flex items-center justify-between">
             <span className="font-semibold">Flash Sales</span>

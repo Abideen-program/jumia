@@ -49,7 +49,7 @@ const SecondSection = () => {
       {isLoading && (
         <div className="mx-2 lg:mx-0 my-4">
           <Wrapper count={count}>
-            {Array(12)
+            {Array(10)
               .fill(0)
               .map((_, idx) => {
                 return <LoadingSkeleton />;
