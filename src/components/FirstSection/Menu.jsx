@@ -21,7 +21,7 @@ const Menu = ({ mobile, hideSide, showSideitem }) => {
   return (
     <>
       <div
-        className={`bg-white w-[206px] rounded-md p-2 xl:gap-3 transition-all duration-500 ease-in ${
+        className={`bg-white w-[206px] rounded-md p-2 xl:gap-3 transition-all duration-300 ease-in ${
           mobile
             ? "fixed top-0 h-screen overflow-y-scroll scrollbar-none flex flex-col gap-3 justify-evenly rounded-none"
             : "hidden h-max gap-[4px]"

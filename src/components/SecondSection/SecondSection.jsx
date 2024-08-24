@@ -3,6 +3,8 @@ import Wrapper from "../CarouselWrapper/Wrapper";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 const SecondSection = () => {
   const [images, setImages] = useState([]);
@@ -24,7 +26,7 @@ const SecondSection = () => {
   const { isLoading, data } = useQuery("first", fetchData, {
     refetchOnWindowFocus: false,
     staleTime: 3600000,
-    cacheTime: 3600000
+    cacheTime: 3600000,
   });
 
   const loadedData = data?.data;
@@ -42,24 +44,35 @@ const SecondSection = () => {
     setImages(loadedImages);
   }, [loadedData]);
 
-  if (isLoading) {
-    return (
-      <h4 className="my-4 text-center bg-[#ff9900] text-white font-medium">
-        Loading products!!!
-      </h4>
-    );
-  }
-
   return (
-    <div className="mx-2 lg:mx-0 my-4">
-      <Wrapper count={count}>
-        {images.map((image) => {
-          return (
-            <SlideItem key={image.id} title={image.title} image={image.image} />
-          );
-        })}
-      </Wrapper>
-    </div>
+    <>
+      {isLoading && (
+        <div className="mx-2 lg:mx-0 my-4">
+          <Wrapper count={count}>
+            {Array(12)
+              .fill(0)
+              .map((_, idx) => {
+                return <LoadingSkeleton />;
+              })}
+          </Wrapper>
+        </div>
+      )}
+      {!isLoading && (
+        <div className="mx-2 lg:mx-0 my-4">
+          <Wrapper count={count}>
+            {images.map((image) => {
+              return (
+                <SlideItem
+                  key={image.id}
+                  title={image.title}
+                  image={image.image}
+                />
+              );
+            })}
+          </Wrapper>
+        </div>
+      )}
+    </>
   );
 };
 
