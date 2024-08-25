@@ -15,6 +15,7 @@ import ThirdSection from "../ThirdSection/ThirdSection";
 import { setUser } from "../Store/Features/UserSlice";
 import { setProduct } from "../Store/Features/ProductSlice";
 import Footer from "../Footer/Footer";
+import Sales from "../Sales/Sales";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -74,6 +75,7 @@ const Home = () => {
     <>
       <div className="my-4 w-full px-[0px] lg:px-[55px]">
         <FirstSection />
+        <Sales />
         <SecondSection />
         <ThirdSection isLoading={isLoading} />
         <FourthSection isLoading={isLoading} />
