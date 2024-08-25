@@ -3,7 +3,7 @@ import SalesItem from "./SalesItem";
 
 const Sales = () => {
   return (
-    <div className="bg-white mt-4 p-4 rounded-md grid grid-cols-6 gap-y-4 gap-x-3">
+    <div className="bg-white mt-4 p-4 rounded-md grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 md:gap-y-4 md:gap-x-3">
       <Link to={"/"}>
         <SalesItem image={"/images/clearance.png"} title="Clearance Sale" />
       </Link>
